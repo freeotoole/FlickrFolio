@@ -1,0 +1,52 @@
+type Settings = {
+  gap: 'sm' | 'md' | 'lg' | 'xl'
+  columns: 2 | 3 | 4
+  siteName: string | null
+  siteDescription?: string | null
+  colophon?: string | null
+  albums: { [key: string]: Album }
+  initialLoad: number
+  gallery?: {
+    title?: string
+    subtitle?: string
+    slug: string
+  }
+}
+
+type Album = {
+  id: string
+  title: string
+  subtitle: string
+}
+
+// get this year from date
+const year = new Date().getFullYear()
+
+export const settings: Settings = {
+  gap: 'md',
+  columns: 3,
+  siteName: "Free's photogram",
+  siteDescription:
+    "**FLICKR GALLERY** by [Free O'Toole](https://freeotoole.com)",
+  colophon: `**© ${year}** | Built with [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), and the [Flickr API](https://www.flickr.com/services/api).`,
+  albums: {
+    film: {
+      id: '72177720313681808',
+      title: 'Analogue adventures',
+      subtitle: 'Shots from my various analog cameras',
+    },
+    cruise: {
+      id: '72177720314817024',
+      title: 'Resilient Lady',
+      subtitle:
+        "My first cruise; Sydney to Hobart on VirginVoyage's Resilient Lady",
+    },
+  },
+  initialLoad: 12,
+  gallery: {
+    title: 'My latest photos',
+    subtitle:
+      '8-bit gochujang photo booth gatekeep lomo, blog shoreditch tattooed. Celiac actually narwhal listicle, mukbang sus kinfolk pug banjo brunch.',
+    slug: 'gallery',
+  },
+}
