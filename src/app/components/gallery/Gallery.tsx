@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+// import { useMediaQuery } from 'react-responsive'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
 // import { Transition } from '@headlessui/react'
@@ -21,29 +21,33 @@ interface GalleryProps {
 }
 
 const Gallery = (props: GalleryProps) => {
+  // const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
+  // const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
+  // const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
   return (
     <>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1280: 3 }}>
-        <Masonry gutter="var(--gutter)">
-          {props.photos &&
-            props.photos.map((photo: FlickrImageProps, i: number) => (
-              <Link
-                key={photo.id}
-                className="relative block"
-                href={`/photos/${photo.id}`}
-              >
-                <Image
-                  className="relative w-full"
-                  src={photo.url_l}
-                  width={600}
-                  height={400}
-                  alt={photo.title}
-                  hover
-                />
-              </Link>
-            ))}
-        </Masonry>
-      </ResponsiveMasonry>
+      {/* <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1280: 3 }}> */}
+      <Masonry columnsCount={3} gutter="var(--gutter)">
+        {props.photos &&
+          props.photos.map((photo: FlickrImageProps, i: number) => (
+            <Link
+              key={photo.id}
+              className="relative block"
+              href={`/photos/${photo.id}`}
+            >
+              <Image
+                className="relative w-full"
+                src={photo.url_l}
+                width={600}
+                height={400}
+                alt={photo.title}
+                hover
+              />
+              {/* {photo.title} */}
+            </Link>
+          ))}
+      </Masonry>
+      {/* </ResponsiveMasonry> */}
       {/* <p className="text-center">
         {isLastPage ? (
           <span>You have reached the end!</span>

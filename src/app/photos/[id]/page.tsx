@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import next from 'next'
+// import ErrorPage from 'next/error'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'react-bootstrap-icons'
 
@@ -12,37 +12,41 @@ interface Params {
   id: string
 }
 
-interface Post {
-  params: Params
-  photo: Pick<
-    FlickrImageProps,
-    'title' | 'description' | 'server' | 'secret' | 'originalsecret'
-  >
+interface ImageProps {
+  photo: FlickrImageProps
   prevphoto: { id: string }
   nextphoto: { id: string }
 }
 
-export default function SinglePost({ params }: Post) {
-  const [post, setPost] = useState<Post | null>(null)
-
+export default function Single({ params }: { params: Params }) {
+  const [post, setPost] = useState<ImageProps | null>(null)
   const fetchPost = async (id: string) => {
-    const res = await fetch(`http://localhost:3013/api/photos/${id}`)
+    const res = await fetch(`/api/photos/${id}`)
     const post = await res.json()
     post && setPost(post)
   }
 
+  // can I do this without the useEffect?
   useEffect(() => {
     fetchPost(params.id)
   }, [params.id])
 
-  const { title, description, server, originalsecret } = post?.photo || {}
+  // if (!post) {
+  //   return <ErrorPage statusCode={404} />
+  // }
+
+  // const { title, description, server, originalsecret } = post?.photo || {}
   // navigate in reverse order
   const prev = post?.nextphoto?.id
   const next = post?.prevphoto?.id
+
   return (
     <div>
       {!post ? (
-        <p>Loading...</p>
+        <div className="flex h-screen w-screen items-center justify-center">
+          {' '}
+          <p className="text-4xl">Loading...</p>
+        </div>
       ) : (
         <div className="relative h-screen px-6">
           <article className="md:grid-cols-sidebar relative grid gap-10">
@@ -72,16 +76,16 @@ export default function SinglePost({ params }: Post) {
                 </div>
               </div>
               <div className="flex-1 ">
-                <h1 className="mb-8 text-3xl">{title && title._content}</h1>
+                <h1 className="mb-8 text-3xl">{post?.photo?.title._content}</h1>
                 <p className="leading-loose">
-                  {description && description._content}
+                  {post?.photo?.description._content}
                 </p>
               </div>
             </div>
             <div className="relative h-screen w-full items-start justify-items-start py-6">
               <Image
                 className="object-left "
-                src={`https://live.staticflickr.com/${server}/${params.id}_${originalsecret}_k.jpg`}
+                src={`https://live.staticflickr.com/${post?.photo?.server}/${params.id}_${post?.photo?.originalsecret}_k.jpg`}
                 width={600}
                 height={400}
                 alt=""

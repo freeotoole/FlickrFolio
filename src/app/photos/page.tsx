@@ -1,10 +1,30 @@
 import Gallery from '../components/gallery/Gallery'
 import Navbar from '../components/navbar/Navbar'
 
-export default async function PostsPage() {
-  const res = await fetch('http://localhost:3013/api/photos')
-  const data = await res.json()
+// Should I be using serversideprops here?
+// https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props#getserversideprops-or-api-routes
 
+export default async function PostsPage() {
+  // const apilUrl = process.env.VERCEL_URL
+  //   ? 'https://' + process.env.VERCEL_URL
+  //   : 'http://localhost:3013'
+
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY
+  const userId = process.env.NEXT_PUBLIC_USER_ID
+
+  const flickrUrl = `https://www.flickr.com/services/rest?method=flickr.people.getPublicPhotos&user_id=${userId}&extras=description,tags,o_dims,url_l,url_k&format=json&nojsoncallback=1&api_key=${apiKey}&per_page=12`
+  const res = await fetch(flickrUrl, {
+    next: { revalidate: 60 },
+  })
+
+  const data = await res.json()
+  console.log('data', data)
+
+  // const res = await fetch(`${apilUrl}/api/photos`)
+  // const data = await res.json()
+  if (!data.photos) {
+    return <div>Loading...</div>
+  }
   return (
     <div className="md:grid-cols-sidebar relative grid gap-6 p-6">
       <div className="flex flex-col">
@@ -20,7 +40,8 @@ export default async function PostsPage() {
         </div>
       </div>
       <div className="relative items-start justify-items-start">
-        {data.photo && <Gallery photos={data.photo} />}
+        {/* {JSON.stringify(data.photos.photo)} */}
+        {<Gallery photos={data.photos?.photo} />}
       </div>
     </div>
   )
