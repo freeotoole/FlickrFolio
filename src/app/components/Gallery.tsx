@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useContext } from 'react'
+import React from 'react'
 import Link from 'next/link'
-// import { useMediaQuery } from 'react-responsive'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
 // import { Transition } from '@headlessui/react'
-import Image from '@/app/components/image/Image'
+import Image from '@/app/components/Image'
 import { FlickrImageProps } from '@/app/types/image'
 
 // import { settings } from '../settings'
@@ -18,12 +17,14 @@ interface GalleryProps {
   tags?: string
   subtitle?: string
   children?: React.ReactNode[]
+  album?: string
 }
 
 const Gallery = (props: GalleryProps) => {
   // const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
   // const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
   // const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+
   return (
     <>
       {/* <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1280: 3 }}> */}
@@ -33,7 +34,7 @@ const Gallery = (props: GalleryProps) => {
             <Link
               key={photo.id}
               className="relative block"
-              href={`/photos/${photo.id}`}
+              href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
             >
               <Image
                 className="relative w-full"

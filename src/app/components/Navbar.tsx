@@ -10,22 +10,25 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ layout }) => {
   return (
-    <nav className={`navbar ${layout}`}>
+    <nav className={`navbar flex-1 ${layout}`}>
       <div className="min-h-[50vh] text-right">
         <h1 className="my-8 text-xl font-normal uppercase tracking-wide">
           Free&apos;s Photogram
         </h1>
 
         <nav className="w-full">
-          <ul className="hidden">
+          <ul className="">
             <li>
-              <Link className="block py-2 font-semibold" href="#">
+              <Link className="block py-2 font-semibold" href="/photos">
                 Show Latest
               </Link>
             </li>
             <li>
-              <Link className="block py-2 hover:font-semibold" href="#">
-                Album One
+              <Link
+                className="block py-2 hover:font-semibold"
+                href="/albums/72177720313681808"
+              >
+                Film
               </Link>
             </li>
             <li>

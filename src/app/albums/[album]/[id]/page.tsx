@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'react-bootstrap-icons'
 
+import GlobalSidebar from '@/app/components/GlobalSidebar'
 import Image from '@/app/components/Image'
 import { FlickrImageProps } from '@/app/types/image'
 
@@ -50,7 +51,11 @@ export default function Single({ params }: { params: Params }) {
       ) : (
         <div className="relative h-screen px-6">
           <article className="md:grid-cols-sidebar relative grid gap-10">
-            <div className="flex flex-col">
+            <GlobalSidebar
+              title={post?.photo?.title._content}
+              description={post?.photo?.description._content}
+            />
+            {/* <div className="flex flex-col">
               <div className="flex flex-1 flex-col">
                 <Link className="block py-4 " href="/photos">
                   Back to photos
@@ -81,7 +86,7 @@ export default function Single({ params }: { params: Params }) {
                   {post?.photo?.description._content}
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="relative h-screen w-full items-start justify-items-start py-6">
               <Image
                 className="object-left "
