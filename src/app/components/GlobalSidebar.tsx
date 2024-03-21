@@ -20,7 +20,7 @@ const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
     <div className="sticky top-0 flex h-screen flex-col">
       <Navbar layout="vertical" />
 
-      {/* {navigation && <ImageNavigation {...navigation} />} */}
+      {navigation && <ImageNavigation {...navigation} />}
 
       {(title || description) && (
         <aside className="flex flex-1 flex-col gap-4 border-t border-gray-300 py-6 text-right">

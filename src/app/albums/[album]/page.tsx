@@ -7,10 +7,8 @@ interface Params {
 }
 
 export default async function AlbumsPage({ params }: { params: Params }) {
-  // HASFETCH - photosets.getPhotos & photosets.getInfo
-
-  const info = await fetchPhotosetInfo(params.album)
   const album = await fetchPhotoset(params.album)
+  const info = await fetchPhotosetInfo(params.album)
 
   if (!album) {
     return <div>Loading...</div>
