@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout }) => {
     <nav className={`navbar flex-1 ${layout}`}>
       <div className="min-h-[50vh] text-right">
         <h1 className="my-8 text-xl font-normal uppercase tracking-wide">
-          Free&apos;s Photogram
+          <Link href="/">Free&apos;s Photogram</Link>
         </h1>
 
         <nav className="w-full">

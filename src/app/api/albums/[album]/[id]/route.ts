@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import {
-  fetchPhoto,
-  fetchPhotoContext,
-  fetchPhotosetContext,
-} from '@/app/apiUtils'
+import { fetchPhoto, fetchPhotoContext } from '@/app/apiUtils'
 
 interface Params {
   id: string
@@ -12,17 +8,12 @@ interface Params {
 
 export async function GET(request: NextRequest, context: { params: Params }) {
   const { id } = context.params
-  const album = request.nextUrl.searchParams.get('album')
+  console.log('request', request)
 
   try {
-    let contextResponse
-    if (album) {
-      contextResponse = await fetchPhotosetContext(album, id)
-    } else {
-      contextResponse = await fetchPhotoContext(id)
-    }
     const photoResponse = await fetchPhoto(id)
-    const data = { ...photoResponse, ...contextResponse } //, ...contextResponse
+    const contextResponse = await fetchPhotoContext(id)
+    const data = { ...photoResponse, ...contextResponse }
     return NextResponse.json(data)
   } catch (error) {
     return NextResponse.json(
