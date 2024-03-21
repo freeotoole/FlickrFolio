@@ -9,9 +9,9 @@ export async function GET(request: NextRequest, context: { params: Params }) {
 
   const apiKey = process.env.NEXT_PUBLIC_API_KEY
 
+  // HASFETCH - flickr.photos.getInfo & flickr.photos.getContext
   const photoUrl = `https://www.flickr.com/services/rest?method=flickr.photos.getInfo&photo_id=${id}&format=json&nojsoncallback=1&api_key=${apiKey}`
   const contextUrl = `https://www.flickr.com/services/rest?method=flickr.photos.getContext&photo_id=${id}&format=json&nojsoncallback=1&api_key=${apiKey}`
-
   // get photo and prev/next context
   const photo = await fetch(photoUrl, {
     next: { revalidate: 300 },
