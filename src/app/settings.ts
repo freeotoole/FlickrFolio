@@ -15,6 +15,7 @@ type Settings = {
 
 type Album = {
   id: string
+  slug: string
   title: string
   subtitle: string
 }
@@ -32,11 +33,13 @@ export const settings: Settings = {
   albums: {
     film: {
       id: '72177720313681808',
+      slug: 'film',
       title: 'Analogue adventures',
       subtitle: 'Shots from my various analog cameras',
     },
     cruise: {
       id: '72177720314817024',
+      slug: 'cruise',
       title: 'Resilient Lady',
       subtitle:
         "My first cruise; Sydney to Hobart on VirginVoyage's Resilient Lady",

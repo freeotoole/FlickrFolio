@@ -1,8 +1,9 @@
 // Utility functions for fetching data from the Flickr API
 
 // user id and api key
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY
-const USER_ID = process.env.NEXT_PUBLIC_USER_ID
+const API_KEY = process.env.API_KEY
+const USER_ID = process.env.USER_ID
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
 
 // public photos
 

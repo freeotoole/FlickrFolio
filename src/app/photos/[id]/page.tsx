@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'react-bootstrap-icons'
 
+import GlobalSidebar from '@/app/components/GlobalSidebar'
 import Image from '@/app/components/Image'
 import { FlickrImageProps } from '@/app/types/image'
 
@@ -19,6 +20,7 @@ interface ImageProps {
 }
 
 export default function Single({ params }: { params: Params }) {
+  // TODO: use clientFetchSingle utility
   const [singlePhoto, setSinglePhoto] = useState<ImageProps | null>(null)
   const fetchPost = async (id: string) => {
     const res = await fetch(`/api/photos/${id}`)
@@ -31,7 +33,7 @@ export default function Single({ params }: { params: Params }) {
     fetchPost(params.id)
   }, [params.id])
 
-  // navigate in reverse order
+  // navigate in reverse order for latest photos
   const prev = singlePhoto?.nextphoto?.id
   const next = singlePhoto?.prevphoto?.id
 
@@ -43,8 +45,13 @@ export default function Single({ params }: { params: Params }) {
         </div>
       ) : (
         <div className="relative h-screen px-6">
-          <article className="md:grid-cols-sidebar relative grid gap-10">
-            <div className="flex flex-col">
+          <article className="relative grid gap-10 md:grid-cols-sidebar">
+            <GlobalSidebar
+              title={singlePhoto?.photo?.title._content}
+              description={singlePhoto?.photo?.description._content}
+              navigation={{ prev, next }}
+            />
+            {/* <div className="flex flex-col">
               <div className="flex flex-1 flex-col">
                 <Link className="block py-4 " href="/photos">
                   Back to photos
@@ -77,7 +84,7 @@ export default function Single({ params }: { params: Params }) {
                   {singlePhoto?.photo?.description._content}
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="relative h-screen w-full items-start justify-items-start py-6">
               <Image
                 className="object-left "

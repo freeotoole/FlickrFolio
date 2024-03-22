@@ -1,3 +1,5 @@
+// TODO: This is likely to not be required. Delete if not used.
+
 import { NextRequest, NextResponse } from 'next/server'
 
 interface Params {
