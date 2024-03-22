@@ -16,13 +16,13 @@ const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
   title = title || context?.title || ''
   description = description || context?.description || ''
   return (
-    <div className="sticky top-0 flex h-screen flex-col">
+    <div className="top-0 flex flex-col md:sticky md:h-screen">
       <Navbar layout="vertical" />
 
       {navigation && <ImageNavigation {...navigation} />}
 
       {(title || description) && (
-        <aside className="flex flex-1 flex-col gap-4 border-t border-gray-300 py-6 text-right">
+        <aside className="flex flex-col gap-4 border-t border-gray-300 py-6 md:flex-1 md:text-right">
           {title && <h2 className="text-3xl">{title}</h2>}
           {description && <p>{description}</p>}
         </aside>

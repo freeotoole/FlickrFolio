@@ -21,8 +21,8 @@ const Navbar: React.FC<NavbarProps> = ({ layout }) => {
     return pathname.includes(slug)
   }
   return (
-    <nav className={`navbar flex-1 ${layout}`}>
-      <div className="min-h-[50vh] text-right">
+    <nav className={`navbar md:flex-1 ${layout}`}>
+      <div className="md:min-h-[50vh] md:text-right">
         <h1 className="my-8 text-xl font-normal uppercase tracking-wide">
           <Link
             href="/"

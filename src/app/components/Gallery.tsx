@@ -2,7 +2,8 @@
 
 import React from 'react'
 import Link from 'next/link'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import { useMediaQuery } from 'react-responsive'
+import Masonry from 'react-responsive-masonry'
 
 // import { Transition } from '@headlessui/react'
 import Image from '@/app/components/Image'
@@ -21,15 +22,22 @@ interface GalleryProps {
 }
 
 const Gallery = (props: GalleryProps) => {
-  // const isMobile = useMediaQuery({ query: '(max-width: 640px)' })
-  // const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
-  // const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+  // TODO: Move to helper function using TW sizes
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
+  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
+
+  const responsiveColumns = () => {
+    let columns = 1
+    if (isTablet) columns = 2
+    if (isDesktop) columns = 3
+    return columns
+  }
 
   return (
     <>
       {/* <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1280: 3 }}> */}
       <section className="py-4">
-        <Masonry columnsCount={3} gutter="var(--gutter)">
+        <Masonry columnsCount={responsiveColumns()} gutter="var(--gutter)">
           {props.photos &&
             props.photos.map((photo: FlickrImageProps, i: number) => (
               <Link

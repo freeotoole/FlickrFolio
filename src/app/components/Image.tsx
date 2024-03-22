@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import NextImage from 'next/image'
 
-// import { Eye } from 'react-bootstrap-icons'
 import Icon from '@/app/components/Icon'
 
 export type ImageProps = {
