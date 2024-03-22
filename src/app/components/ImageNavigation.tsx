@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowLeft, ArrowRight } from 'react-bootstrap-icons'
+import { ArrowLeft, ArrowRight, Camera } from 'react-feather'
 
 const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
   const path = usePathname()
@@ -19,7 +19,7 @@ const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
         {!!prevPath && (
           <li>
             <Link className="flex items-center gap-2 py-3 pr-4" href={prevPath}>
-              <ArrowLeft />
+              <ArrowLeft strokeWidth={1} />
               Previous
             </Link>{' '}
           </li>
@@ -27,7 +27,7 @@ const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
         {!!nextPath && (
           <li className="ml-auto">
             <Link className="flex items-center gap-2 py-3 pl-4" href={nextPath}>
-              Next <ArrowRight />
+              Next <ArrowRight strokeWidth={1} />
             </Link>{' '}
           </li>
         )}

@@ -14,7 +14,7 @@ export default async function PhotosPage() {
         title="Photos root page"
         description="️️️Web Developer by day, photo enthusiast by night and always a geek! When I'm not untangling code and chasing pixel perfection, you can catch me obsessing over the perfect exposure and trying to convince my camera that it's not a mouse (apparently, autofocus disagrees)."
       />
-      <div className="relative items-start justify-items-start py-4">
+      <div className="relative items-start justify-items-start">
         {<Gallery photos={data.photos?.photo} />}
       </div>
     </div>

@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import NextImage from 'next/image'
-import { Eye } from 'react-bootstrap-icons'
+
+// import { Eye } from 'react-bootstrap-icons'
+import Icon from '@/app/components/Icon'
 
 export type ImageProps = {
   alt: string
@@ -72,7 +74,7 @@ const Image = (props: ImageProps) => {
             aria-hidden="true"
             className="absolute inset-0 hidden flex-col items-center justify-center gap-2 bg-black/50 p-6 text-white opacity-0 transition duration-500 group-hover:opacity-100 sm:flex"
           >
-            <Eye size={32} />
+            <Icon name="Eye" size={64} />
             <span className="text-sm uppercase ">{props.alt}</span>
           </figcaption>
         )}

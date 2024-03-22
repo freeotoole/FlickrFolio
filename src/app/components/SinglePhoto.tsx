@@ -2,11 +2,7 @@ import { fetchPhotoWithContext } from '@/app/apiUtils'
 import GlobalSidebar from '@/app/components/GlobalSidebar'
 import Image from '@/app/components/Image'
 import { FlickrImageProps } from '@/app/types/image'
-
-interface SingleProps {
-  id: string
-  album?: string
-}
+import { ParamProps } from '@/app/types/page'
 
 interface ImageProps {
   photo: FlickrImageProps
@@ -14,7 +10,7 @@ interface ImageProps {
   nextphoto: { id: string }
 }
 
-export default async function Single({ params }: { params: SingleProps }) {
+export default async function Single({ params }: { params: ParamProps }) {
   const singlePhoto: ImageProps = await fetchPhotoWithContext(params.id)
 
   // navigate in reverse order for latest photos

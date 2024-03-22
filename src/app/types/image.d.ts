@@ -1,7 +1,7 @@
 export type FlickrImageProps = {
   id: string
   owner: string
-  secret: string // if
+  secret: string
   originalsecret?: string
   server: string
   farm: number

@@ -22,7 +22,7 @@ export default async function AlbumsPage({ params }: { params: Params }) {
         title={info?.photoset?.title?._content}
         description={info?.photoset?.description?._content}
       />
-      <div className="relative items-start justify-items-start py-4">
+      <div className="relative items-start justify-items-start">
         {/* {JSON.stringify(settings.albums)} */}
         {<Gallery photos={album?.photoset?.photo} album={albumId} />}
       </div>

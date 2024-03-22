@@ -28,26 +28,28 @@ const Gallery = (props: GalleryProps) => {
   return (
     <>
       {/* <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1280: 3 }}> */}
-      <Masonry columnsCount={3} gutter="var(--gutter)">
-        {props.photos &&
-          props.photos.map((photo: FlickrImageProps, i: number) => (
-            <Link
-              key={photo.id}
-              className="relative block"
-              href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
-            >
-              <Image
-                className="relative w-full"
-                src={photo.url_l}
-                width={600}
-                height={400}
-                alt={photo.title}
-                hover
-              />
-              {/* {photo.title} */}
-            </Link>
-          ))}
-      </Masonry>
+      <section className="py-4">
+        <Masonry columnsCount={3} gutter="var(--gutter)">
+          {props.photos &&
+            props.photos.map((photo: FlickrImageProps, i: number) => (
+              <Link
+                key={photo.id}
+                className="relative block"
+                href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
+              >
+                <Image
+                  className="relative w-full"
+                  src={photo.url_l}
+                  width={600}
+                  height={400}
+                  alt={photo.title}
+                  hover
+                />
+                {/* {photo.title} */}
+              </Link>
+            ))}
+        </Masonry>
+      </section>
       {/* </ResponsiveMasonry> */}
       {/* <p className="text-center">
         {isLastPage ? (

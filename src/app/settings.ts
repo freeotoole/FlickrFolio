@@ -1,3 +1,5 @@
+import { IconProps } from '@/app/components/Icon'
+
 type Settings = {
   gap: 'sm' | 'md' | 'lg' | 'xl'
   columns: 2 | 3 | 4
@@ -18,6 +20,7 @@ type Album = {
   slug: string
   title: string
   subtitle: string
+  icon?: IconProps['name']
 }
 
 // get this year from date
@@ -36,6 +39,7 @@ export const settings: Settings = {
       slug: 'film',
       title: 'Analogue adventures',
       subtitle: 'Shots from my various analog cameras',
+      icon: 'Film',
     },
     cruise: {
       id: '72177720314817024',
@@ -43,6 +47,7 @@ export const settings: Settings = {
       title: 'Resilient Lady',
       subtitle:
         "My first cruise; Sydney to Hobart on VirginVoyage's Resilient Lady",
+      icon: 'Anchor',
     },
   },
   initialLoad: 12,

@@ -10,7 +10,6 @@ import ImageNavigation from './ImageNavigation'
 const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
   title,
   description,
-  album,
   navigation,
 }) => {
   const context = useContext(GlobalSidebarContext)
