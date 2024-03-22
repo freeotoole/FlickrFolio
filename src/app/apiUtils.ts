@@ -17,6 +17,7 @@ export async function fetchPublicPhotos() {
 }
 
 export async function fetchPhoto(photoId: string) {
+  // call fetchPhotoContext and fetch photoSetContext in here
   const photoUrl = `https://www.flickr.com/services/rest?method=flickr.photos.getInfo&photo_id=${photoId}&format=json&nojsoncallback=1&api_key=${API_KEY}`
   const response = await fetch(photoUrl, { next: { revalidate: 300 } })
   if (!response.ok) {
@@ -59,4 +60,22 @@ export const fetchPhotosetContext = async (album: string, photoId: string) => {
     throw new Error('Failed to fetch photo data')
   }
   return response.json()
+}
+
+export const fetchPhotoWithContext = async (
+  photoId: string,
+  album?: string
+) => {
+  try {
+    let contextResponse
+    const photoResponse = await fetchPhoto(photoId)
+    if (!album) {
+      contextResponse = await fetchPhotoContext(photoId)
+    } else {
+      contextResponse = await fetchPhotosetContext(album, photoId)
+    }
+    return { ...photoResponse, ...contextResponse }
+  } catch (error) {
+    throw new Error('Failed to fetch photo data')
+  }
 }

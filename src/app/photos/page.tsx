@@ -2,7 +2,7 @@ import { fetchPublicPhotos } from '@/app/apiUtils'
 import Gallery from '@/app/components/Gallery'
 import GlobalSidebar from '../components/GlobalSidebar'
 
-export default async function PostsPage() {
+export default async function PhotosPage() {
   const data = await fetchPublicPhotos()
 
   if (!data.photos) {
