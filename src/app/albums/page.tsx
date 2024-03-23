@@ -14,7 +14,7 @@ export default async function PostsPage() {
       <div className="relative items-start justify-items-start">
         {/* <Gallery photos={data.photos?.photo} /> */}
         <div className="flex h-full items-center justify-center border bg-gray-100">
-          <h2 className=" text-2xl uppercase">Albums page to go here</h2>
+          <h2 className="text-2xl uppercase">Albums page to go here</h2>
         </div>
       </div>
     </div>

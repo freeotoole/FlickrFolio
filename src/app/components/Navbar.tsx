@@ -35,11 +35,8 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
       <div className="md:min-h-[50vh] md:text-right">
         {!hideTitle && (
           <h1 className="my-8 text-base font-normal uppercase tracking-wide">
-            <Link
-              href="/"
-              className=" inline-flex flex-nowrap items-center gap-1"
-            >
-              Free&apos;s Photogram <Icon className="text-lg" name="Aperture" />
+            <Link href="/" className="inline-flex flex-wrap items-center gap-1">
+              Free&apos;s Photogram <Icon className="text-xl" name="Aperture" />
             </Link>
           </h1>
         )}

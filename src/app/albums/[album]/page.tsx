@@ -9,7 +9,7 @@ interface Params {
 
 export default async function AlbumsPage({ params }: { params: Params }) {
   // get album id from settings
-  console.log('params', params)
+  // console.log('params', params)
 
   const albumId = settings.albums[params.album]?.id
   const album = await fetchPhotoset(albumId)
