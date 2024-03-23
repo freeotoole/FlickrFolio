@@ -33,7 +33,7 @@ export default async function Home() {
         </p>
 
         <nav className="w-full">
-          <h3 className="font-semibold">Check out some albums</h3>
+          <h2 className="font-semibold">Check out some albums</h2>
           <ul className="flex items-center justify-center gap-12">
             {Object.values(settings.albums).map((album, i) => {
               return (
@@ -56,7 +56,7 @@ export default async function Home() {
           </ul>
         </nav>
         <div className="">
-          <h3 className="font-semibold">Or scroll for latest</h3>
+          <p className="font-semibold">Or scroll for latest</p>
           <Icon name="ChevronsDown" className="mx-auto text-5xl" />
         </div>
       </div>
