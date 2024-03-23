@@ -28,12 +28,4 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  svg.icon,
-  svg.bi {
-    width: 1em;
-    height: 1em;
-  }
 }

@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sans.className} font-light`}>{children}</body>
+      <body className={`${sans.className} font-light leading-loose`}>
+        {children}
+      </body>
     </html>
   )
 }
