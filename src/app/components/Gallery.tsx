@@ -2,8 +2,6 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { useMediaQuery } from 'react-responsive'
-import Masonry from 'react-responsive-masonry'
 
 // import { Transition } from '@headlessui/react'
 import Image from '@/app/components/Image'
@@ -22,27 +20,15 @@ interface GalleryProps {
 }
 
 const Gallery = (props: GalleryProps) => {
-  // TODO: Move to helper function using TW sizes
-  const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
-  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
-
-  const responsiveColumns = () => {
-    let columns = 1
-    if (isTablet) columns = 2
-    if (isDesktop) columns = 3
-    return columns
-  }
-
   return (
     <>
-      {/* <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1280: 3 }}> */}
       <section className="py-4">
-        <Masonry columnsCount={responsiveColumns()} gutter="var(--gutter)">
+        <div className="columns-1 gap-2 lg:columns-2 xl:columns-3">
           {props.photos &&
             props.photos.map((photo: FlickrImageProps, i: number) => (
               <Link
                 key={photo.id}
-                className="relative block"
+                className="relative mb-2 block"
                 href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
               >
                 <Image
@@ -53,12 +39,10 @@ const Gallery = (props: GalleryProps) => {
                   alt={photo.title}
                   hover
                 />
-                {/* {photo.title} */}
               </Link>
             ))}
-        </Masonry>
+        </div>
       </section>
-      {/* </ResponsiveMasonry> */}
       {/* <p className="text-center">
         {isLastPage ? (
           <span>You have reached the end!</span>
