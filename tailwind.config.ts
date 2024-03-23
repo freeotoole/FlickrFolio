@@ -18,6 +18,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@onthetools/tailwind-text-clamp')({
+      utilityClassName: 'clamp-text',
+    }),
+  ],
 }
 export default config

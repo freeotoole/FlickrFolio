@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@onthetools/tailwind-text-clamp": "^1.0.6",
     "@types/feather-icons": "^4.29.4",
     "next": "14.1.3",
     "react": "^18",

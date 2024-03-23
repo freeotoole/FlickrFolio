@@ -5,5 +5,7 @@ interface Params {
 }
 
 export default async function AlbumPhotoPage({ params }: { params: Params }) {
+  console.log('params', params)
+
   return <SinglePhoto params={params} />
 }

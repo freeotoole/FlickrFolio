@@ -9,6 +9,8 @@ interface Params {
 
 export default async function AlbumsPage({ params }: { params: Params }) {
   // get album id from settings
+  console.log('params', params)
+
   const albumId = settings.albums[params.album]?.id
   const album = await fetchPhotoset(albumId)
   const info = await fetchPhotosetInfo(albumId)
@@ -24,7 +26,12 @@ export default async function AlbumsPage({ params }: { params: Params }) {
       />
       <div className="relative items-start justify-items-start">
         {/* {JSON.stringify(settings.albums)} */}
-        {<Gallery photos={album?.photoset?.photo} album={albumId} />}
+        {
+          <Gallery
+            photos={album?.photoset?.photo}
+            album={settings.albums[params.album]?.slug}
+          />
+        }
       </div>
     </div>
   )

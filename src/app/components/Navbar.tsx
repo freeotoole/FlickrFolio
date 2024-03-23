@@ -34,32 +34,29 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
     <nav className={`navbar md:flex-1 `}>
       <div className="md:min-h-[50vh] md:text-right">
         {!hideTitle && (
-          <h1 className="my-8 text-xl font-normal uppercase tracking-wide">
+          <h1 className="my-8 text-base font-normal uppercase tracking-wide">
             <Link
               href="/"
               className=" inline-flex flex-nowrap items-center gap-1"
             >
-              Free&apos;s Photogram{' '}
-              <Icon className="text-3xl" name="Aperture" />
+              Free&apos;s Photogram <Icon className="text-lg" name="Aperture" />
             </Link>
           </h1>
         )}
         <nav className="w-full">
           <ul className="">
-            {pathname !== '/' && (
-              <li>
-                <Link
-                  className={`group inline-flex items-center gap-1 py-2 hover:font-semibold ${isActive('/photos') ? 'font-semibold' : ''}`}
-                  href="/photos"
-                >
-                  <Icon
-                    name="Camera"
-                    className={`group-hover:stroke-2 ${isActive('/photos') ? 'stroke-2' : ''}`}
-                  />
-                  Latest Photos
-                </Link>
-              </li>
-            )}
+            <li>
+              <Link
+                className={`group inline-flex items-center gap-1 py-2 hover:font-semibold ${isActive('/photos') || isActive('/') ? 'font-semibold' : ''}`}
+                href="/photos"
+              >
+                <Icon
+                  name="Camera"
+                  className={`group-hover:stroke-2 ${isActive('/photos') ? 'stroke-2' : ''}`}
+                />
+                Latest Photos
+              </Link>
+            </li>
 
             {Object.values(settings.albums).map((album, i) => {
               const active = isActive(`/albums/${album.slug}`)
