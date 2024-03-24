@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import NextImage from 'next/image'
 
 import Icon from '@/app/components/Icon'

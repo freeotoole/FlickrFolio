@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
           <ul className="">
             <li>
               <Link
-                className={`group inline-flex items-center gap-1 py-2 hover:font-semibold ${isActive('/photos') || isActive('/') ? 'font-semibold' : ''}`}
+                className={`group inline-flex items-center gap-1 py-2 hover:font-semibold ${isActive('/photos') || pathname === '/' ? 'font-semibold' : ''}`}
                 href="/photos"
               >
                 <Icon
