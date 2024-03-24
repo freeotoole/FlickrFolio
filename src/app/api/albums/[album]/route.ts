@@ -8,8 +8,10 @@ interface Params {
 
 export async function GET(request: NextRequest, context: { params: Params }) {
   const { album } = context.params
+  const page: number = Number(request.nextUrl.searchParams.get('page')) || 1
+
   try {
-    const photoResponse = await fetchPhotoset(album)
+    const photoResponse = await fetchPhotoset(album, page)
     return NextResponse.json(photoResponse)
   } catch (error) {
     return NextResponse.json(

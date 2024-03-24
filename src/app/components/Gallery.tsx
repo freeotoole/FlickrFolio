@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import { Console } from 'console'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import useSWRInfinite from 'swr/infinite'
 
@@ -8,6 +9,7 @@ import useSWRInfinite from 'swr/infinite'
 import Image from '@/app/components/Image'
 import { settings } from '@/app/settings'
 import { FlickrImageProps } from '@/app/types/image'
+import Icon from './Icon'
 
 interface GalleryProps {
   options?: any
@@ -19,10 +21,8 @@ interface GalleryProps {
 }
 
 const Gallery = (props: GalleryProps) => {
-  const isLastPage = false
-  const getMorePhotos = async () => {
-    console.log('get more photos')
-  }
+  const [page, setPage] = useState(1)
+  const [isLastPage, setIsLastPage] = useState(false)
 
   const fetcher = (url: any) => {
     performance.mark('fetch-start')
@@ -45,6 +45,12 @@ const Gallery = (props: GalleryProps) => {
     // console.log('SWR props', isLoading, data, error)
   }, [isLoading, data, error])
 
+  const getMorePhotos = () => {
+    console.log('get more photos')
+    // setSize(page + 1)
+    setSize(size + 1)
+  }
+
   if (!data) return null
   let totalPages = 1
   let photos = []
@@ -58,22 +64,29 @@ const Gallery = (props: GalleryProps) => {
     }
   }
 
+  const columnClasses = 'grid gap-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3'
+  // const columnClasses = 'columns-1 gap-2 lg:columns-2 xl:columns-3'
+
+  const isPortrait = (width: number, height: number) => {
+    return height > width
+  }
+  console.log('Gallery', { data, photos, totalPages, size, isLoading })
   return (
     <>
       <section className="py-4">
-        <div className="columns-1 gap-2 lg:columns-2 xl:columns-3">
+        <div className={columnClasses}>
           {photos &&
             photos.map((photo: FlickrImageProps, i: number) => (
               <Link
                 key={photo.id}
-                className="relative mb-2 block"
+                className={`relative block ${isPortrait(photo.width_l, photo.height_l) ? 'lg:row-span-2 ' : ''}`}
                 href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
               >
                 <Image
-                  className="relative w-full"
+                  className="relative w-full object-cover"
                   src={photo.url_l}
-                  width={600}
-                  height={400}
+                  width={photo.width_l}
+                  height={photo.height_l}
                   alt={photo.title}
                   hover
                 />
@@ -81,15 +94,15 @@ const Gallery = (props: GalleryProps) => {
             ))}
         </div>
       </section>
-      <p className="text-center">
+      <p className="mt-10 border-t py-4 text-center">
         {isLastPage ? (
           <span>You have reached the end!</span>
         ) : (
           <button
             onClick={() => getMorePhotos()}
-            className="mx-auto mt-4 bg-gray-200 px-6 py-2 text-center text-gray-700 dark:bg-gray-700 dark:text-gray-300"
+            className="mx-auto mt-4 flex items-center gap-4 bg-gray-200 px-6 py-2 text-center text-gray-700"
           >
-            Load more
+            Load more <Icon name="Loader" className="animate-spin " size={24} />
           </button>
         )}
       </p>

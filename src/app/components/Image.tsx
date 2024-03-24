@@ -38,7 +38,7 @@ const Image = (props: ImageProps) => {
   const [loading, setLoading] = useState(false)
   const [quality, setQuality] = useState(props.quality || 80)
 
-  let aspect: String = ''
+  let aspect: string = ''
   if ('forceAspect' in settings) {
     if (props.width === props.height) {
       aspect = 'aspect-square'
@@ -52,7 +52,7 @@ const Image = (props: ImageProps) => {
   return (
     <>
       <figure
-        className={`group ${props.hover ? 'block overflow-hidden' : 'contents'}`}
+        className={`group ${props.hover ? 'contents overflow-hidden' : 'contents'}`}
       >
         <NextImage
           width={props.width}
@@ -60,9 +60,7 @@ const Image = (props: ImageProps) => {
           src={props.src}
           alt={props.alt}
           className={`${props.className} h-full w-full object-contain  ${
-            props.hover
-              ? 'transition-transform duration-700 sm:group-hover:scale-125'
-              : ''
+            props.hover ? 'transition-transform duration-700' : ''
           }`}
           loading={props.lazy ? 'lazy' : 'eager'}
           sizes={props.sizes}
@@ -71,7 +69,7 @@ const Image = (props: ImageProps) => {
         {props.hover && (
           <figcaption
             aria-hidden="true"
-            className="absolute inset-0 hidden flex-col items-center justify-center gap-2 bg-black/50 p-6 text-white opacity-0 transition duration-500 group-hover:opacity-100 sm:flex"
+            className="absolute inset-0 z-20 hidden flex-col items-center justify-center gap-2 bg-black/40 p-6 text-white opacity-0 transition duration-500 group-hover:opacity-100 group-hover:backdrop-contrast-150 group-hover:backdrop-saturate-[.25] sm:flex"
           >
             <Icon name="Eye" size={64} />
             <span className="text-sm uppercase ">{props.alt}</span>

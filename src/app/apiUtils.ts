@@ -41,8 +41,10 @@ export async function fetchPhotoContext(photoId: string) {
 }
 
 // photoset / album requests
-export const fetchPhotoset = async (album: string) => {
-  const apiUrl = `https://www.flickr.com/services/rest?method=flickr.photosets.getPhotos&photoset_id=${album}&user_id=${USER_ID}&extras=description,tags,o_dims,url_l,url_k&format=json&nojsoncallback=1&api_key=${API_KEY}&per_page=${settings.perPage}`
+export const fetchPhotoset = async (album: string, page: number = 1) => {
+  console.log('fetchPhotoset', album, page)
+
+  const apiUrl = `https://www.flickr.com/services/rest?method=flickr.photosets.getPhotos&photoset_id=${album}&user_id=${USER_ID}&extras=description,tags,o_dims,url_l,url_k&format=json&nojsoncallback=1&api_key=${API_KEY}&per_page=${settings.perPage}&page=${page}`
   const response = await fetch(apiUrl, { next: { revalidate: 300 } })
   if (!response.ok) {
     throw new Error('Failed to fetch photo data')
