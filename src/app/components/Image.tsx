@@ -48,12 +48,16 @@ const Image = (props: ImageProps) => {
       aspect = settings.forceAspect?.portrait as string
     }
   }
+  const figCaptionStyles = `
+    absolute inset-0 z-20 hidden flex-col items-center justify-center sm:flex
+    p-6 text-white opacity-0 transition duration-500  
+    group-hover:opacity-100 group-hover:backdrop-contrast-200 
+    before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-gray-800/70 before:bg-mix-blend-mode-multiply
+`
 
   return (
     <>
-      <figure
-        className={`group ${props.hover ? 'contents overflow-hidden' : 'contents'}`}
-      >
+      <figure className={`group ${props.hover ? 'contents' : ''}`}>
         <NextImage
           width={props.width}
           height={props.height}
@@ -67,11 +71,8 @@ const Image = (props: ImageProps) => {
           quality={quality}
         />
         {props.hover && (
-          <figcaption
-            aria-hidden="true"
-            className="absolute inset-0 z-20 hidden flex-col items-center justify-center gap-2 bg-black/40 p-6 text-white opacity-0 transition duration-500 group-hover:opacity-100 group-hover:backdrop-contrast-150 group-hover:backdrop-saturate-[.25] sm:flex"
-          >
-            <Icon name="Eye" size={64} />
+          <figcaption aria-hidden="true" className={figCaptionStyles}>
+            <Icon name="Eye" size={52} />
             <span className="text-sm uppercase ">{props.alt}</span>
           </figcaption>
         )}

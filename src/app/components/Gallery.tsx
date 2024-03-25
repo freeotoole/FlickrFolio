@@ -1,8 +1,8 @@
 'use client'
 
-import { Console } from 'console'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useInView } from 'react-intersection-observer'
 import useSWRInfinite from 'swr/infinite'
 
 // import { Transition } from '@headlessui/react'
@@ -21,9 +21,9 @@ interface GalleryProps {
 }
 
 const Gallery = (props: GalleryProps) => {
-  const [page, setPage] = useState(1)
   const [isLastPage, setIsLastPage] = useState(false)
-
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
+  const { ref, inView } = useInView()
   const fetcher = (url: any) => {
     performance.mark('fetch-start')
     return fetch(url).then((r) => {
@@ -42,14 +42,18 @@ const Gallery = (props: GalleryProps) => {
   )
 
   useEffect(() => {
-    // console.log('SWR props', isLoading, data, error)
-  }, [isLoading, data, error])
+    const loading =
+      isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
+    setIsLoadingMore(loading || false)
+  }, [isLoading, data, size])
 
-  const getMorePhotos = () => {
-    console.log('get more photos')
-    // setSize(page + 1)
-    setSize(size + 1)
-  }
+  // TODO: check for last page before fetching more
+  // TODO: Add back to top button perhaps
+  useEffect(() => {
+    if (!isLastPage && inView) {
+      setSize(size + 1)
+    }
+  }, [inView, isLastPage])
 
   if (!data) return null
   let totalPages = 1
@@ -70,7 +74,8 @@ const Gallery = (props: GalleryProps) => {
   const isPortrait = (width: number, height: number) => {
     return height > width
   }
-  console.log('Gallery', { data, photos, totalPages, size, isLoading })
+
+  // console.log('Gallery', { data, photos, totalPages, size, isLoading })
   return (
     <>
       <section className="py-4">
@@ -94,16 +99,22 @@ const Gallery = (props: GalleryProps) => {
             ))}
         </div>
       </section>
-      <p className="mt-10 border-t py-4 text-center">
+      <p ref={ref} className="mt-10 border-t py-4 text-center">
         {isLastPage ? (
           <span>You have reached the end!</span>
         ) : (
-          <button
-            onClick={() => getMorePhotos()}
-            className="mx-auto mt-4 flex items-center gap-4 bg-gray-200 px-6 py-2 text-center text-gray-700"
-          >
-            Load more <Icon name="Loader" className="animate-spin " size={24} />
-          </button>
+          <>
+            {isLoadingMore ? (
+              <Icon name="Loader" className="mx-auto animate-spin" size={36} />
+            ) : (
+              <button
+                onClick={() => getMorePhotos()}
+                className="mx-auto mt-4 flex items-center gap-4 bg-gray-200 px-6 py-2 text-center text-gray-700"
+              >
+                Load more
+              </button>
+            )}
+          </>
         )}
       </p>
     </>
