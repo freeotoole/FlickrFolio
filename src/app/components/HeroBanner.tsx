@@ -17,10 +17,10 @@ const HeroBanner = () => {
   return (
     <div className="justify center relative flex items-center bg-cover">
       <div
-        style={{ textShadow: '2px 2px 10px 2px rgba(0,0,0,0.75)' }}
-        className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-12  p-20 text-center "
+        // style={{ textShadow: '2px 2px 10px 2px rgba(0,0,0,0.75)' }}
+        className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-12 px-6 py-20 text-center lg:px-20 "
       >
-        <h1 className="clamp-text-2xl uppercase tracking-wide">
+        <h1 className="uppercase tracking-wide clamp-text-2xl">
           <Link
             href="/"
             className="inline-flex flex-wrap items-center justify-center gap-1"
@@ -29,7 +29,7 @@ const HeroBanner = () => {
             <Icon className="text-[1.5em]" name="Aperture" />
           </Link>
         </h1>
-        <p className="lede clamp-text-base leading-loose">
+        <p className="lede leading-loose clamp-text-base">
           Web Developer by day, photo enthusiast by night and always a geek!
           When I&apos;m not untangling code and chasing pixel perfection, you
           can catch me obsessing over the perfect exposure and trying to

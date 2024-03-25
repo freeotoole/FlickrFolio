@@ -57,21 +57,28 @@ const Image = (props: ImageProps) => {
     }
   }
   const figCaptionStyles = `
-    absolute inset-0 z-20 hidden flex-col items-center justify-center sm:flex
-    p-6 text-white opacity-0 transition duration-500  
-    group-hover:opacity-100 group-hover:backdrop-contrast-200 
-    before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-gray-800/70 before:bg-mix-blend-mode-multiply
-`
+    absolute inset-0 hidden flex-col items-center justify-center sm:flex
+    p-6 text-white opacity-0 transition duration-700  
+    group-hover:opacity-100 group-hover:backdrop-contrast-150 group-hover:backdrop-saturate-50 group-hover:backdrop-brightness-100
+    before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-gradient-radial before:from-cyan-950/60 before:to-gray-800/30
+    `
+
+  const imageStyles = `
+  h-full w-full object-contain transition duration-700 ease-in-out 
+  ${props.hover ? 'group-hover:scale-110' : ''}
+  ${fadeIn ? 'opacity-100' : 'opacity-0'} 
+  ${props.className} 
+  `
 
   return (
     <>
-      <figure className={`group contents `}>
+      <figure className={` contents `}>
         <NextImage
           width={props.width}
           height={props.height}
           src={props.src}
           alt={props.alt}
-          className={`${props.className} h-full w-full object-contain transition duration-700 ease-in-out   ${fadeIn ? 'opacity-100' : 'opacity-0'} `}
+          className={imageStyles}
           loading={props.lazy ? 'lazy' : 'eager'}
           sizes={props.sizes}
           quality={quality}

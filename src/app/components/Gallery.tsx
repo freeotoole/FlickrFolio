@@ -83,7 +83,8 @@ const Gallery = (props: GalleryProps) => {
             photos.map((photo: FlickrImageProps, i: number) => (
               <Link
                 key={photo.id}
-                className={`relative block ${isPortrait(photo.width_l, photo.height_l) ? 'lg:row-span-2 ' : ''}`}
+                className={`group relative block overflow-hidden
+                ${isPortrait(photo.width_l, photo.height_l) ? 'lg:row-span-2 ' : ''}`}
                 href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
               >
                 <Image
