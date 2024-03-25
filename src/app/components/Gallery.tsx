@@ -98,7 +98,7 @@ const Gallery = (props: GalleryProps) => {
             ))}
         </div>
       </section>
-      <p ref={ref} className="mt-4 py-6 text-center">
+      <div ref={ref} className="mt-4 py-6 text-center">
         {isLastPage ? (
           <span>You have reached the end!</span>
         ) : (
@@ -106,7 +106,7 @@ const Gallery = (props: GalleryProps) => {
             <Icon name="Loader" className="mx-auto animate-spin text-4xl" />
           </div>
         )}
-      </p>
+      </div>
     </>
   )
 }

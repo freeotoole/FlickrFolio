@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NextImage from 'next/image'
 
 import Icon from '@/app/components/Icon'
@@ -35,8 +35,16 @@ const settings: Settings = {
 }
 
 const Image = (props: ImageProps) => {
-  const [loading, setLoading] = useState(false)
+  const [fadeIn, setFadeIn] = useState(false)
   const [quality, setQuality] = useState(props.quality || 80)
+
+  useEffect(() => {
+    // console.log('fadeIn', fadeIn)
+    // setFadeIn(true)
+    setTimeout(() => {
+      setFadeIn(true)
+    }, 1)
+  }, [fadeIn])
 
   let aspect: string = ''
   if ('forceAspect' in settings) {
@@ -57,15 +65,13 @@ const Image = (props: ImageProps) => {
 
   return (
     <>
-      <figure className={`group ${props.hover ? 'contents' : ''}`}>
+      <figure className={`group contents `}>
         <NextImage
           width={props.width}
           height={props.height}
           src={props.src}
           alt={props.alt}
-          className={`${props.className} h-full w-full object-contain  ${
-            props.hover ? 'transition-transform duration-700' : ''
-          }`}
+          className={`${props.className} h-full w-full object-contain transition duration-700 ease-in-out   ${fadeIn ? 'opacity-100' : 'opacity-0'} `}
           loading={props.lazy ? 'lazy' : 'eager'}
           sizes={props.sizes}
           quality={quality}
