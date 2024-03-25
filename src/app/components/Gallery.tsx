@@ -75,7 +75,6 @@ const Gallery = (props: GalleryProps) => {
     return height > width
   }
 
-  // console.log('Gallery', { data, photos, totalPages, size, isLoading })
   return (
     <>
       <section className="py-4">
@@ -99,11 +98,13 @@ const Gallery = (props: GalleryProps) => {
             ))}
         </div>
       </section>
-      <p ref={ref} className="mt-10 border-t py-4 text-center">
+      <p ref={ref} className="mt-4 py-6 text-center">
         {isLastPage ? (
           <span>You have reached the end!</span>
         ) : (
-          <Icon name="Loader" size={24} />
+          <div className="">
+            <Icon name="Loader" className="mx-auto animate-spin text-4xl" />
+          </div>
         )}
       </p>
     </>
