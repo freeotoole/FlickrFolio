@@ -1,18 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { fetchPhotoset } from '@/app/apiUtils'
+import { fetchPublicPhotos } from '@/app/apiUtils'
 
 interface Params {
-  album: string
+  page: number
 }
 
-export async function GET(request: NextRequest, context: { params: Params }) {
-  const { album } = context.params
+export async function GET(request: NextRequest) {
   const page: number = Number(request.nextUrl.searchParams.get('page')) || 1
-
   try {
-    const photoResponse = await fetchPhotoset(album, page)
-    return NextResponse.json(photoResponse)
+    const data = await fetchPublicPhotos(page)
+    return NextResponse.json(data)
   } catch (error) {
     return NextResponse.json(
       {

@@ -8,8 +8,6 @@ interface Params {
 
 export async function GET(request: NextRequest, context: { params: Params }) {
   const { id } = context.params
-  console.log('request', request)
-
   try {
     const photoResponse = await fetchPhoto(id)
     const contextResponse = await fetchPhotoContext(id)

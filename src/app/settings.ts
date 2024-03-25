@@ -7,7 +7,7 @@ type Settings = {
   siteDescription?: string | null
   colophon?: string | null
   albums: { [key: string]: Album }
-  initialLoad: number
+  perPage: number
   gallery?: {
     title?: string
     subtitle?: string
@@ -50,7 +50,7 @@ export const settings: Settings = {
       icon: 'Anchor',
     },
   },
-  initialLoad: 12,
+  perPage: 12,
   gallery: {
     title: 'My latest photos',
     subtitle:

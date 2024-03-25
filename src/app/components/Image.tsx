@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import NextImage from 'next/image'
 
 import Icon from '@/app/components/Icon'
@@ -38,7 +38,7 @@ const Image = (props: ImageProps) => {
   const [loading, setLoading] = useState(false)
   const [quality, setQuality] = useState(props.quality || 80)
 
-  let aspect: String = ''
+  let aspect: string = ''
   if ('forceAspect' in settings) {
     if (props.width === props.height) {
       aspect = 'aspect-square'
@@ -48,32 +48,31 @@ const Image = (props: ImageProps) => {
       aspect = settings.forceAspect?.portrait as string
     }
   }
+  const figCaptionStyles = `
+    absolute inset-0 z-20 hidden flex-col items-center justify-center sm:flex
+    p-6 text-white opacity-0 transition duration-500  
+    group-hover:opacity-100 group-hover:backdrop-contrast-200 
+    before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-gray-800/70 before:bg-mix-blend-mode-multiply
+`
 
   return (
     <>
-      <figure
-        className={`group ${props.hover ? 'block overflow-hidden' : 'contents'}`}
-      >
+      <figure className={`group ${props.hover ? 'contents' : ''}`}>
         <NextImage
           width={props.width}
           height={props.height}
           src={props.src}
           alt={props.alt}
           className={`${props.className} h-full w-full object-contain  ${
-            props.hover
-              ? 'transition-transform duration-700 sm:group-hover:scale-125'
-              : ''
+            props.hover ? 'transition-transform duration-700' : ''
           }`}
           loading={props.lazy ? 'lazy' : 'eager'}
           sizes={props.sizes}
           quality={quality}
         />
         {props.hover && (
-          <figcaption
-            aria-hidden="true"
-            className="absolute inset-0 hidden flex-col items-center justify-center gap-2 bg-black/50 p-6 text-white opacity-0 transition duration-500 group-hover:opacity-100 sm:flex"
-          >
-            <Icon name="Eye" size={64} />
+          <figcaption aria-hidden="true" className={figCaptionStyles}>
+            <Icon name="Eye" size={52} />
             <span className="text-sm uppercase ">{props.alt}</span>
           </figcaption>
         )}

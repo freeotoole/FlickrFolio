@@ -17,7 +17,7 @@ export default async function Home() {
           <GlobalSidebar />
         </div>
         <div className="relative items-start justify-items-start">
-          {<Gallery photos={data.photos?.photo} />}
+          {<Gallery />}
         </div>
       </div>
     </>
