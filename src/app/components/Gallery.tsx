@@ -103,18 +103,7 @@ const Gallery = (props: GalleryProps) => {
         {isLastPage ? (
           <span>You have reached the end!</span>
         ) : (
-          <>
-            {isLoadingMore ? (
-              <Icon name="Loader" className="mx-auto animate-spin" size={36} />
-            ) : (
-              <button
-                onClick={() => getMorePhotos()}
-                className="mx-auto mt-4 flex items-center gap-4 bg-gray-200 px-6 py-2 text-center text-gray-700"
-              >
-                Load more
-              </button>
-            )}
-          </>
+          <Icon name="Loader" size={24} />
         )}
       </p>
     </>
