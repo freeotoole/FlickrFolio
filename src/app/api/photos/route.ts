@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   const page: number = Number(request.nextUrl.searchParams.get('page')) || 1
   try {
     const data = await fetchPublicPhotos(page)
-    return NextResponse.json(data)
+    return NextResponse.json(data.photos)
   } catch (error) {
     return NextResponse.json(
       {

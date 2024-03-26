@@ -12,6 +12,7 @@ export async function GET(request: NextRequest, context: { params: Params }) {
     const photoResponse = await fetchPhoto(id)
     const contextResponse = await fetchPhotoContext(id)
     const data = { ...photoResponse, ...contextResponse }
+
     return NextResponse.json(data)
   } catch (error) {
     return NextResponse.json(

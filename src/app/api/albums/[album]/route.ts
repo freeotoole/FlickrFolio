@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, context: { params: Params }) {
 
   try {
     const photoResponse = await fetchPhotoset(album, page)
-    return NextResponse.json(photoResponse)
+    return NextResponse.json(photoResponse.photoset)
   } catch (error) {
     return NextResponse.json(
       {

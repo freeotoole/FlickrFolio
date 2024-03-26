@@ -10,10 +10,7 @@ export default async function PhotosPage() {
   }
   return (
     <div className="relative grid gap-6 px-4 md:grid-cols-sidebar">
-      <GlobalSidebar
-        title="Photos root page"
-        description="️️️Web Developer by day, photo enthusiast by night and always a geek! When I'm not untangling code and chasing pixel perfection, you can catch me obsessing over the perfect exposure and trying to convince my camera that it's not a mouse (apparently, autofocus disagrees)."
-      />
+      <GlobalSidebar title="Latest photos" />
       <div className="relative items-start justify-items-start">
         {<Gallery />}
       </div>

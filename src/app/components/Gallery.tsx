@@ -22,7 +22,7 @@ interface GalleryProps {
 
 const Gallery = (props: GalleryProps) => {
   const [isLastPage, setIsLastPage] = useState(false)
-  const [isLoadingMore, setIsLoadingMore] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { ref, inView } = useInView()
   const fetcher = (url: any) => {
     performance.mark('fetch-start')
@@ -42,13 +42,15 @@ const Gallery = (props: GalleryProps) => {
   )
 
   useEffect(() => {
-    const loading =
-      isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
-    setIsLoadingMore(loading || false)
+    setLoading(
+      isLoading ||
+        (size > 0 && data && typeof data[size - 1] === 'undefined') ||
+        false
+    )
+    const totalPages = data ? data[0].pages : 0
+    setIsLastPage((data && data.length >= totalPages) || false)
   }, [isLoading, data, size])
 
-  // TODO: check for last page before fetching more
-  // TODO: Add back to top button perhaps
   useEffect(() => {
     if (!isLastPage && inView) {
       setSize(size + 1)
@@ -56,15 +58,10 @@ const Gallery = (props: GalleryProps) => {
   }, [inView, isLastPage])
 
   if (!data) return null
-  let totalPages = 1
   let photos = []
   for (let i = 0; i < data.length; i++) {
-    if (data[i].photos) {
-      photos.push(...data[i].photos.photo)
-      totalPages = data[i].photos.pages
-    } else {
-      photos.push(...data[i].photoset.photo)
-      totalPages = data[i].photoset.pages
+    if (data[i]) {
+      photos.push(...data[i].photo)
     }
   }
 
@@ -99,13 +96,20 @@ const Gallery = (props: GalleryProps) => {
             ))}
         </div>
       </section>
-      <div ref={ref} className="mt-4 py-6 text-center">
+      <div ref={ref} className="mt-4 py-6">
         {isLastPage ? (
-          <span>You have reached the end!</span>
-        ) : (
-          <div className="">
-            <Icon name="Loader" className="mx-auto animate-spin text-4xl" />
+          <div className="flex items-center justify-center gap-2">
+            <Icon name="Meh" className="text-4xl" />
+            <span>No more photos here!</span>
           </div>
+        ) : (
+          <>
+            {loading && (
+              <div className="">
+                <Icon name="Loader" className="mx-auto animate-spin text-4xl" />
+              </div>
+            )}
+          </>
         )}
       </div>
     </>
