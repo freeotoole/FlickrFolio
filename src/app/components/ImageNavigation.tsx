@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react'
+import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { ArrowLeft, ArrowRight, Camera } from 'react-feather'
 
@@ -43,23 +44,25 @@ const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
       <ul className="flex">
         {!!prevPath && (
           <li>
-            <button
+            <Link
+              href={prevPath}
               className="flex items-center gap-2 py-3 pr-4"
-              onClick={() => navigate(-1)}
+              // onClick={() => navigate(-1)}
             >
               <ArrowLeft strokeWidth={1} />
               Previous
-            </button>
+            </Link>
           </li>
         )}
         {!!nextPath && (
           <li className="ml-auto">
-            <button
+            <Link
+              href={nextPath}
               className="flex items-center gap-2 py-3 pl-4"
-              onClick={() => navigate(1)}
+              // onClick={() => navigate(1)}
             >
               Next <ArrowRight strokeWidth={1} />
-            </button>
+            </Link>
           </li>
         )}
       </ul>
