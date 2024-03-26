@@ -41,6 +41,13 @@ export const settings: Settings = {
       subtitle: 'Shots from my various analog cameras',
       icon: 'Film',
     },
+    challenges: {
+      id: '72177720313003477',
+      slug: 'challenges',
+      title: 'Flickr challenges',
+      subtitle: "Photos taken for various Flickr challenges'",
+      icon: 'Award',
+    },
     cruise: {
       id: '72177720314817024',
       slug: 'cruise',
