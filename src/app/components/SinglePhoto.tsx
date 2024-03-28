@@ -1,6 +1,6 @@
 import { fetchPhotoWithContext, fetchSizes } from '@/app/apiUtils'
-import GlobalSidebar from '@/app/components/GlobalSidebar'
 import Image from '@/app/components/Image'
+import ImageNavigation from '@/app/components/ImageNavigation'
 import { settings } from '@/app/settings'
 import { FlickrImageProps } from '@/app/types/image'
 import { ParamProps } from '@/app/types/page'
@@ -55,39 +55,29 @@ export default async function Single({ params }: { params: ParamProps }) {
   }
   return (
     <div>
-      {!singlePhoto ? (
-        <div className="flex h-screen w-screen items-center justify-center">
-          <p className="text-4xl">Loading...</p>
-        </div>
-      ) : (
-        <div className="relative h-screen px-4">
-          <article className="relative grid gap-10 md:grid-cols-sidebar">
-            <GlobalSidebar
-              title={singlePhoto?.photo?.title._content}
-              description={singlePhoto?.photo?.description._content}
-              navigation={{ prev, next }}
+      <div className="relative\">
+        <article className="">
+          <div className="align-start relative  w-full justify-items-start">
+            <Image
+              className=""
+              src={`https://live.staticflickr.com/${singlePhoto?.photo?.server}/${params.id}_${singlePhoto?.photo?.originalsecret}_k.jpg`}
+              width={size.lg?.width || size.md?.width}
+              height={size.lg?.height || size.md?.height}
+              alt=""
             />
-            <div className="align-start relative h-screen w-full justify-items-start py-4">
-              <Image
-                className=""
-                src={`https://live.staticflickr.com/${singlePhoto?.photo?.server}/${params.id}_${singlePhoto?.photo?.originalsecret}_k.jpg`}
-                width={size.lg?.width || size.md?.width}
-                height={size.lg?.height || size.md?.height}
-                alt=""
-              />
-              {/* If portrait put details on right || underneath */}
-              <div className="flex flex-wrap gap-10 py-6">
-                <h2 className="shrink-0 basis-64 text-3xl lg:basis-80">
-                  {singlePhoto?.photo?.title._content}
-                </h2>
-                <div className="max-w-xl flex-1">
-                  <p>{singlePhoto?.photo?.description._content}</p>
-                </div>
+            <ImageNavigation prev={prev} next={next} />
+            {/* If portrait put details on right || underneath */}
+            <div className="flex flex-wrap gap-10 py-6">
+              <h2 className="shrink-0 basis-64 text-3xl lg:basis-80">
+                {singlePhoto?.photo?.title._content}
+              </h2>
+              <div className="max-w-xl flex-1">
+                <p>{singlePhoto?.photo?.description._content}</p>
               </div>
             </div>
-          </article>
-        </div>
-      )}
+          </div>
+        </article>
+      </div>
     </div>
   )
 }

@@ -13,8 +13,8 @@ export const LayoutProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [layout, setLayout] = useState<GlobalSidebarProps>({
     album: '',
-    title: '',
-    description: '',
+    title: 'test title from the context',
+    description: 'test description from the context',
   })
 
   // Add any logic here to update the layout state

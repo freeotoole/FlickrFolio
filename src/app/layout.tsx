@@ -3,6 +3,8 @@ import { Space_Grotesk } from 'next/font/google'
 
 // Yanone_Kaffeesatz | Space_Grotesk
 
+import GlobalSidebar from '@/app/components/GlobalSidebar'
+
 import './globals.css'
 
 const sans = Space_Grotesk({ subsets: ['latin'] })
@@ -21,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.className} font-light leading-loose`}>
-        {children}
+        <GlobalSidebar />
+        <main className="p-[calc(var(--gutter)*2)] md:ml-[var(--sidebar-width)]">
+          {children}
+        </main>
       </body>
     </html>
   )
