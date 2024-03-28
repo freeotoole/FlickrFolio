@@ -26,18 +26,21 @@ const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
       <div className="mt-4 border-t py-6">
         <ul className="flex gap-8 text-2xl md:justify-center">
           <li>
-            <Link href="#">
-              <Icon name="Mail" className=" " />
+            <Link href="#" target="_blank">
+              <Icon name="Mail" />
+              <span className="sr-only">Email</span>
             </Link>
           </li>
           <li>
-            <Link href="#">
-              <Icon name="Instagram" className=" " />
+            <Link href="#" target="_blank">
+              <Icon name="Instagram" />
+              <span className="sr-only">Follow me on Insta</span>
             </Link>
           </li>
           <li>
-            <Link href="#">
-              <Icon name="Linkedin" className=" " />
+            <Link href="#" target="_blank">
+              <Icon name="Linkedin" />
+              <span className="sr-only">Find me on LinkedIn</span>
             </Link>
           </li>
         </ul>
