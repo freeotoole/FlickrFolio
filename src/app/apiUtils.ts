@@ -1,5 +1,7 @@
 // Utility functions for fetching data from the Flickr API
 
+import { log } from 'console'
+
 import { settings } from './settings'
 
 // user id and api key
@@ -24,6 +26,15 @@ export async function fetchPublicPhotos(page: number = 1) {
 export async function fetchPhoto(photoId: string) {
   // call fetchPhotoContext and fetch photoSetContext in here
   const photoUrl = `https://www.flickr.com/services/rest?method=flickr.photos.getInfo&photo_id=${photoId}&format=json&nojsoncallback=1&api_key=${API_KEY}`
+  const response = await fetch(photoUrl, { next: { revalidate: 300 } })
+  if (!response.ok) {
+    throw new Error('Failed to fetch photo data')
+  }
+  return response.json()
+}
+export async function fetchSizes(photoId: string) {
+  // call fetchPhotoContext and fetch photoSetContext in here
+  const photoUrl = `https://www.flickr.com/services/rest?method=flickr.photos.getSizes&photo_id=${photoId}&format=json&nojsoncallback=1&api_key=${API_KEY}`
   const response = await fetch(photoUrl, { next: { revalidate: 300 } })
   if (!response.ok) {
     throw new Error('Failed to fetch photo data')
@@ -79,6 +90,7 @@ export const fetchPhotoWithContext = async (
     } else {
       contextResponse = await fetchPhotosetContext(album, photoId)
     }
+    // const sizesResponse = await fetchSizes(photoId)
     return { ...photoResponse, ...contextResponse }
   } catch (error) {
     throw new Error('Failed to fetch photo data')

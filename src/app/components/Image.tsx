@@ -37,25 +37,17 @@ const settings: Settings = {
 const Image = (props: ImageProps) => {
   const [fadeIn, setFadeIn] = useState(false)
   const [quality, setQuality] = useState(props.quality || 80)
+  // console.log('props', props)
 
   useEffect(() => {
-    // console.log('fadeIn', fadeIn)
     // setFadeIn(true)
     setTimeout(() => {
       setFadeIn(true)
     }, 1)
-  }, [fadeIn])
+  }, [])
 
-  let aspect: string = ''
-  if ('forceAspect' in settings) {
-    if (props.width === props.height) {
-      aspect = 'aspect-square'
-    } else if (props.width > props.height) {
-      aspect = settings.forceAspect?.landscape as string
-    } else {
-      aspect = settings.forceAspect?.portrait as string
-    }
-  }
+  const isPortrait = props.height > props.width
+
   const figCaptionStyles = `
     absolute inset-0 hidden flex-col items-center justify-center sm:flex
     p-6 text-white opacity-0 transition duration-700  
@@ -64,7 +56,8 @@ const Image = (props: ImageProps) => {
     `
 
   const imageStyles = `
-  h-full w-full object-contain transition duration-700 ease-in-out 
+  ${isPortrait ? 'h-full w-auto' : 'h-auto w-full'}
+   transition duration-700 ease-in-out 
   ${props.hover ? 'group-hover:scale-110' : ''}
   ${fadeIn ? 'opacity-100' : 'opacity-0'} 
   ${props.className} 

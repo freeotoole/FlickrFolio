@@ -66,7 +66,6 @@ const Gallery = (props: GalleryProps) => {
   }
 
   const columnClasses = 'grid gap-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3'
-  // const columnClasses = 'columns-1 gap-2 lg:columns-2 xl:columns-3'
 
   const isPortrait = (width: number, height: number) => {
     return height > width
@@ -85,7 +84,7 @@ const Gallery = (props: GalleryProps) => {
                 href={`/${props.album ? 'albums/' + props.album : 'photos'}/${photo.id}`} // if album route to albums/albumId/photoId
               >
                 <Image
-                  className="relative w-full object-cover"
+                  className="relative h-full !w-full object-cover"
                   src={photo.url_l}
                   width={photo.width_l}
                   height={photo.height_l}

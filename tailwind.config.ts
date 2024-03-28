@@ -22,6 +22,7 @@ const config: Config = {
     require('@onthetools/tailwind-text-clamp')({
       utilityClassName: 'clamp-text',
     }),
+    require('@tailwindcss/typography'),
   ],
 }
 export default config
