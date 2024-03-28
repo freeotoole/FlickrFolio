@@ -141,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
                 </span>
               </li> */}
             </ul>
-            <form className="mt-10 flex hidden flex-col gap-4">
+            {/* <form className="mt-10 flex hidden flex-col gap-4">
               <input
                 className="block border px-2 py-1"
                 placeholder="your name"
@@ -158,7 +158,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
                 id=""
                 placeholder="Message"
               ></textarea>
-            </form>
+            </form> */}
           </nav>
         </div>
         {isOpen && (
