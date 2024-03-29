@@ -18,7 +18,7 @@ const GlobalSidebar: React.FC<GlobalSidebarProps> = ({ navigation }) => {
   console.log('context', context)
 
   return (
-    <div className="top-0 flex flex-col md:fixed md:h-screen md:w-[var(--sidebar-width)]">
+    <div className="top-0 flex flex-col border-r md:fixed md:h-screen md:w-[var(--sidebar-width)]">
       <Navbar />
 
       {/* {navigation && <ImageNavigation {...navigation} />} */}

@@ -94,9 +94,10 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
                 <Icon
                   name="Film"
                   className={`group-hover:stroke-2 ${isActive('/albums') ? 'stroke-2' : ''}`}
+                  // PERHAPS transition to down chevron on hover?
                 />
               </span>
-              <ul className="-ml-2 -mr-4 from-rose-100 via-transparent pr-6 group-hover:bg-gradient-to-r">
+              <ul className=" pr-6 ">
                 {Object.values(settings.albums).map((album, i) => {
                   const active = isActive(`/albums/${album.slug}`)
                   return (

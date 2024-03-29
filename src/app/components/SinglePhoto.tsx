@@ -53,11 +53,17 @@ export default async function Single({ params }: { params: ParamProps }) {
       sizes.size.find((size: SizeProps) => size.label === 'Large 1600') ||
       sizes.size.find((size: SizeProps) => size.label === 'Large'),
   }
+
+  const isPortrait = size.lg?.height > size.lg?.width
+  const layoutStyles = `${isPortrait ? ' h-[calc(100vh-2rem)] flex-wrap ' : 'flex-col'} `
+
   return (
     <div>
       <div className="relative\">
         <article className="">
-          <div className="align-start relative  w-full justify-items-start">
+          <div
+            className={`align-start relative flex w-full justify-items-start gap-x-10 ${layoutStyles}`}
+          >
             <Image
               className=""
               src={`https://live.staticflickr.com/${singlePhoto?.photo?.server}/${params.id}_${singlePhoto?.photo?.originalsecret}_k.jpg`}
@@ -65,14 +71,28 @@ export default async function Single({ params }: { params: ParamProps }) {
               height={size.lg?.height || size.md?.height}
               alt=""
             />
-            <ImageNavigation prev={prev} next={next} />
-            {/* If portrait put details on right || underneath */}
-            <div className="flex flex-wrap gap-10 py-6">
-              <h2 className="shrink-0 basis-64 text-3xl lg:basis-80">
-                {singlePhoto?.photo?.title._content}
-              </h2>
-              <div className="max-w-xl flex-1">
-                <p>{singlePhoto?.photo?.description._content}</p>
+            <div
+              className={`${isPortrait ? 'flex max-w-md flex-col justify-center' : 'max-w-4xl'}`}
+            >
+              <ImageNavigation prev={prev} next={next} />
+              {/* If portrait put details on right || underneath */}
+              <div
+                className={`flex ${isPortrait ? 'order-first flex-col gap-y-4' : ' flex-wrap gap-x-6 py-6'}`}
+              >
+                <h2
+                  className={`text-3xl ${isPortrait ? '' : 'shrink-0 basis-64  text-right lg:basis-80'}`}
+                >
+                  {singlePhoto?.photo?.title._content}
+                </h2>
+                <div
+                  className={`${isPortrait ? '' : 'max-w-xl flex-1 border-l py-2 pl-6'}`}
+                >
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: singlePhoto?.photo?.description._content,
+                    }}
+                  ></p>
+                </div>
               </div>
             </div>
           </div>

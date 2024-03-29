@@ -4,7 +4,7 @@ import Icon from '@/app/components/Icon'
 
 export default function Connect() {
   return (
-    <div className="mt-auto border-t bg-gray-100 py-10 md:bg-transparent md:py-6 ">
+    <div className="mt-auto border-t bg-gray-100 py-10 md:py-6 ">
       <ul className="flex justify-center gap-8 text-2xl">
         <li>
           <Link href="#" target="_blank">
