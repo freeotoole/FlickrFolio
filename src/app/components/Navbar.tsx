@@ -4,8 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-// import { Aperture } from 'react-feather'
-
 import Icon from '@/app/components/Icon'
 import { settings } from '../settings'
 import Connect from './Connect'
@@ -44,8 +42,8 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
   const navActiveStyles = 'font-semibold !text-rose-600 '
 
   return (
-    <nav className={`NAVBAR flex flex-1 flex-col  md:text-right`}>
-      <div className="NAVHEADER my-8 flex items-center px-4">
+    <nav className={`flex flex-1 flex-col  md:text-right`}>
+      <div className="my-8 flex items-center px-4">
         <h1 className="text-base font-normal uppercase tracking-wide md:ml-auto">
           <Link href="/" className="inline-flex flex-wrap items-center gap-2">
             Free&apos;s Photogram <Icon className="text-xl" name="Aperture" />
@@ -61,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
         </button>
       </div>
       <div
-        className={`SLIDENAV ${navStyles} ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`${navStyles} ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <nav className="mb-6 flex flex-col">
           <button
@@ -97,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
                   // PERHAPS transition to down chevron on hover?
                 />
               </span>
-              <ul className=" pr-6 ">
+              <ul className=" pr-2 ">
                 {Object.values(settings.albums).map((album, i) => {
                   const active = isActive(`/albums/${album.slug}`)
                   return (

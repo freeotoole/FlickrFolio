@@ -1,29 +1,24 @@
-'use client'
-
-import { log } from 'console'
-import React, { useContext } from 'react'
-import Link from 'next/link'
+// import { fetchPhotosetInfo } from '@/app/apiUtils'
 
 import Navbar from '@/app/components/Navbar'
-import { GlobalSidebarContext } from '@/app/LayoutContext'
-import { GlobalSidebarProps } from '@/app/types/global-sidebar'
-import Icon from './Icon'
-import ImageNavigation from './ImageNavigation'
 
-const GlobalSidebar: React.FC<GlobalSidebarProps> = ({ navigation }) => {
-  const context = useContext(GlobalSidebarContext)
-  const title = context?.title || ''
-  const description = context?.description || ''
+export default async function GlobalSidebar() {
+  // Future Feature: Fetch album info from Flickr to build album navigation
+  // const albums = ['72177720313681808', '72177720314817024', '72177720313143179']
+  // const response = await Promise.all(
+  //   albums.map((albumId) => fetchPhotosetInfo(albumId))
+  // )
 
-  console.log('context', context)
+  // const albumList = response.map((item) => ({
+  //   title: item.photoset.title._content,
+  //   description: item.photoset.description._content,
+  //   photosetId: item.photoset.id,
+  // }))
 
+  // albums={albumList}
   return (
     <div className="top-0 flex flex-col border-r md:fixed md:h-screen md:w-[var(--sidebar-width)]">
-      <Navbar />
-
-      {/* {navigation && <ImageNavigation {...navigation} />} */}
+      <Navbar /> ≈
     </div>
   )
 }
-
-export default GlobalSidebar

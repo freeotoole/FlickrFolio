@@ -51,7 +51,7 @@ export const settings: Settings = {
     cruise: {
       id: '72177720314817024',
       slug: 'cruise',
-      title: 'Resilient Lady',
+      title: 'Cruise',
       subtitle:
         "My first cruise; Sydney to Hobart on VirginVoyage's Resilient Lady",
       icon: 'Anchor',
