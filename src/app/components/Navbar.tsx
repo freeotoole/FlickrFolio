@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
 
   return (
     <nav className={`flex flex-1 flex-col  md:text-right`}>
-      <div className="my-8 flex items-center px-4">
+      <div className="flex items-center p-4 md:mt-4">
         <h1 className="text-base font-normal uppercase tracking-wide md:ml-auto">
           <Link href="/" className="inline-flex flex-wrap items-center gap-2">
             Free&apos;s Photogram <Icon className="text-xl" name="Aperture" />

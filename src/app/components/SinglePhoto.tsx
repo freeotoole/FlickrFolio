@@ -75,17 +75,16 @@ export default async function Single({ params }: { params: ParamProps }) {
               className={`${isPortrait ? 'flex max-w-md flex-col justify-center' : 'max-w-4xl'}`}
             >
               <ImageNavigation prev={prev} next={next} />
-              {/* If portrait put details on right || underneath */}
               <div
-                className={`flex ${isPortrait ? 'order-first flex-col gap-y-4' : ' flex-wrap gap-x-6 py-6'}`}
+                className={` ${isPortrait ? 'order-first flex flex-col gap-y-4' : 'gap-x-6 py-6 lg:flex lg:flex-wrap'}`}
               >
                 <h2
-                  className={`text-3xl ${isPortrait ? '' : 'shrink-0 basis-64  text-right lg:basis-80'}`}
+                  className={`text-3xl ${isPortrait ? '' : 'shrink-0 basis-64  lg:basis-80 lg:text-right'}`}
                 >
                   {singlePhoto?.photo?.title._content}
                 </h2>
                 <div
-                  className={`${isPortrait ? '' : 'max-w-xl flex-1 border-l py-2 pl-6'}`}
+                  className={`${isPortrait ? '' : 'max-w-xl flex-1 py-2 lg:border-l lg:pl-6'}`}
                 >
                   <p
                     dangerouslySetInnerHTML={{
