@@ -32,6 +32,7 @@ const config: Config = {
               lineHeight: 1.4,
             },
             h2: {
+              fontWeight: 'semibold',
               marginBottom: '1rem',
             },
           },
@@ -39,9 +40,11 @@ const config: Config = {
         lg: {
           css: {
             h1: {
+              fontWeight: 'semibold',
               lineHeight: 1.4,
             },
             h2: {
+              fontWeight: 'semibold',
               marginBottom: '1rem',
               // fontSize: '2rem',
             },

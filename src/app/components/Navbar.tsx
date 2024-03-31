@@ -76,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
           </button>
 
           <ul className="px-6">
-            <li className="hover:border-secondary-300">
+            <li className="hover:border-secondary-100">
               <Link
                 className={`${navItemStyles} ${isActive('/photos') || pathname === '/' ? navActiveStyles : ''}`}
                 href="/photos"
@@ -121,7 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
                 })}
               </ul>
             </li>
-            <li className=" hover:border-secondary-300">
+            <li className=" hover:border-secondary-100">
               <Link
                 href="/about"
                 className={`${navItemStyles} ${isActive('/about') ? navActiveStyles : ''}`}

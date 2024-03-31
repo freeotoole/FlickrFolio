@@ -23,12 +23,12 @@ const HeroBanner = () => {
         <h1 className="uppercase tracking-wide clamp-text-2xl">
           <Link
             href="/"
-            className="inline-flex flex-wrap items-center justify-center gap-1 text-gray-900"
+            className="inline-flex flex-wrap items-center justify-center gap-1 text-primary-500"
           >
             <span>{settings.siteName}</span>
             <div className="flex">
               {/* <Icon className="text-secondary-600" name="Aperture" /> */}
-              <Icon className="text-primary-600" name="Aperture" />
+              <Icon className="text-primary-500" name="Aperture" />
             </div>
           </Link>
         </h1>
