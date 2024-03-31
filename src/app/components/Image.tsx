@@ -52,7 +52,7 @@ const Image = (props: ImageProps) => {
     absolute inset-0 hidden flex-col items-center justify-center md:flex
     p-6 text-white opacity-0 transition duration-700  
     group-hover:opacity-100 group-hover:backdrop-contrast-150 group-hover:backdrop-saturate-50 group-hover:backdrop-brightness-100
-    before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-gradient-radial before:from-cyan-950/60 before:to-cyan-900/20
+    before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-gradient-radial before:from-primary-950/60 before:to-secondary-900/30
     `
 
   const imageStyles = `

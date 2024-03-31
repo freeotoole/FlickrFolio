@@ -76,15 +76,15 @@ export default async function Single({ params }: { params: ParamProps }) {
             >
               <ImageNavigation prev={prev} next={next} />
               <div
-                className={` ${isPortrait ? 'order-first flex flex-col gap-y-4' : 'gap-x-6 py-6 lg:flex lg:flex-wrap'}`}
+                className={` ${isPortrait ? 'order-first flex flex-col gap-y-4' : 'gap-x-10 py-6 lg:flex lg:flex-wrap'}`}
               >
                 <h2
-                  className={`text-3xl ${isPortrait ? '' : 'shrink-0 basis-64  lg:basis-80 lg:text-right'}`}
+                  className={`text-3xl text-primary-500 ${isPortrait ? '' : 'shrink-0 basis-64  lg:basis-80 lg:text-right'}`}
                 >
                   {singlePhoto?.photo?.title._content}
                 </h2>
                 <div
-                  className={`${isPortrait ? '' : 'max-w-xl flex-1 py-2 lg:border-l lg:pl-6'}`}
+                  className={`${isPortrait ? '' : 'max-w-xl flex-1  text-black '}`}
                 >
                   <p
                     dangerouslySetInnerHTML={{

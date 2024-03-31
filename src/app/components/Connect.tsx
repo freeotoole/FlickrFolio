@@ -4,22 +4,19 @@ import Icon from '@/app/components/Icon'
 
 export default function Connect() {
   return (
-    <div className="mt-auto border-t bg-gray-100 py-10 md:py-6 ">
+    <div className="mt-auto border-t py-10 md:py-6 ">
       <ul className="flex justify-center gap-8 text-2xl">
         <li>
-          <Link href="#" target="_blank">
-            <Icon name="Mail" />
-            <span className="sr-only">Email</span>
+          <Link
+            href="https://github.com/freeotoole/FlickrFolio"
+            target="_blank"
+          >
+            <Icon name="GitHub" />
+            <span className="sr-only">Download from GitHub</span>
           </Link>
         </li>
         <li>
-          <Link href="#" target="_blank">
-            <Icon name="Instagram" />
-            <span className="sr-only">Follow me on Insta</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="#" target="_blank">
+          <Link href="https://www.linkedin.com/in/freeotoole" target="_blank">
             <Icon name="Linkedin" />
             <span className="sr-only">Find me on LinkedIn</span>
           </Link>

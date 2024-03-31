@@ -29,7 +29,7 @@ const year = new Date().getFullYear()
 export const settings: Settings = {
   gap: 'md',
   columns: 3,
-  siteName: "Free's photogram",
+  siteName: "Free's Flickr Feed",
   siteDescription:
     "**FLICKR GALLERY** by [Free O'Toole](https://freeotoole.com)",
   colophon: `**© ${year}** | Built with [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), and the [Flickr API](https://www.flickr.com/services/api).`,

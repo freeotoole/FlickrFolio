@@ -73,7 +73,7 @@ const Gallery = (props: GalleryProps) => {
 
   return (
     <>
-      <section className="">
+      <section>
         <div className={columnClasses}>
           {photos &&
             photos.map((photo: FlickrImageProps, i: number) => (

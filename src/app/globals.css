@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  /* --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255; */
   --gutter: 0.5rem;
   --sidebar-width: 17em;
+  --tw-prose-body: pink;
+  --tw-prose-headings: #111827;
+  --tw-prose-lead: #4b5563;
+  --tw-prose-links: #111827;
   @media screen and (min-width: 768px) {
     /* --gutter: 1rem; */
     /* --sidebar-width: 13em; */
@@ -23,8 +27,9 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-end-rgb));
+  /* @apply bg-gray-300 text-gray-600; */
+  /* color: rgb(var(--foreground-rgb)); */
+  /* background: rgb(var(--background-end-rgb)); */
 }
 
 @layer utilities {

@@ -1,8 +1,50 @@
+/* eslint-disable react/no-unescaped-entities */
+
+import Icon from '@/app/components/Icon'
+
 export default function About() {
   return (
-    <div className="mt-10 text-center">
-      <h1 className="text-3xl">About</h1>
-      <p>Coming soon...</p>
+    <div className="prose ml-10 pb-10 pt-10 lg:prose-lg">
+      <h1 className="text-primary-500">
+        <span className="text-primary-600">Flickr</span>
+        <span className="text-secondary-600">Feed</span> is meticulously
+        designed to offer a seamless and sophisticated platform for showcasing
+        your photography.
+      </h1>
+      <p className="lead">
+        With an intuitive interface, customizable features, and zero cost,
+        FlickrFolio is the ultimate solution for photographers of all levels.
+      </p>
+
+      <h2 className="text-primary-500">Simplified Showcase</h2>
+
+      <p className="">
+        Connect effortlessly to your Flickr account and unlock a world of
+        possibilities. FlickrFolio creates a minimalist, infinite scrolling web
+        gallery that elegantly displays your photos and albums. Whether you're a
+        professional seeking a sleek portfolio or an amateur looking to share
+        your passion, FlickrFolio caters to your needs with grace.
+      </p>
+      <h2 className="flex items-center gap-3 text-primary-500">
+        Open Source <Icon name="GitHub" className=" text-secondary-600" />
+      </h2>
+
+      <p>
+        FlickrFolio is more than just a tool—it's a collaborative project. As an
+        open-source endeavor, the source code and documentation is available on
+        GitHub at{' '}
+        <a href="https://github.com/freeotoole/FlickrFolio">
+          https://github.com/freeotoole/FlickrFolio
+        </a>
+        , inviting contributions, issue reports, and feature suggestions from
+        the community. Join us in shaping the future of photography display on
+        the web.
+      </p>
+
+      <p>
+        Experience the elegance, simplicity, and freedom of FlickrFolio today.
+        Showcase your photos like never before, and let your creativity shine.
+      </p>
     </div>
   )
 }
