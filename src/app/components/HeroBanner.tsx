@@ -39,34 +39,6 @@ const HeroBanner = () => {
           convince my camera that it&apos;s not a mouse (apparently, autofocus
           disagrees).
         </p>
-
-        <nav className="hidden w-full">
-          <h2 className="font-semibold">Check out some albums</h2>
-          <ul className="flex items-center justify-center gap-12">
-            {Object.values(settings.albums).map((album, i) => {
-              return (
-                <li key={i}>
-                  <Link
-                    className={`group inline-flex items-center gap-1 py-2 hover:font-semibold  `}
-                    href={`/albums/${album.slug}`}
-                  >
-                    {album.icon && (
-                      <Icon
-                        name={album.icon}
-                        className={`text-2xl group-hover:stroke-2`}
-                      />
-                    )}
-                    {album.title}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        </nav>
-        {/* <div className="">
-            <p className="font-semibold">Or scroll for latest</p>
-            <Icon name="ChevronsDown" className="mx-auto text-5xl" />
-          </div> */}
       </div>
     </div>
   )
