@@ -24,7 +24,6 @@ export const preload = (id: string, album?: string) => {
 }
 export default async function Single({ params }: { params: ParamProps }) {
   const albumId = settings.albums[params.album ?? '']?.id
-  // fetch in parallel
   const singlePhoto: ImageProps = await fetchPhotoWithContext(
     params.id,
     albumId
@@ -44,7 +43,6 @@ export default async function Single({ params }: { params: ParamProps }) {
   preload(prev, albumId)
   preload(next, albumId)
 
-  // console.log('singlePhoto', singlePhoto)
   // get Medium and Large sizes from sizes array
   const size = {
     md: sizes.size.find((size: SizeProps) => size.label === 'Medium'),
