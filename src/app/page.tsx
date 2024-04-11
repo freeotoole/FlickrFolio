@@ -1,11 +1,15 @@
-import Gallery from '@/app/components/Gallery'
-import HeroBanner from '@/app/components/HeroBanner'
+// import Gallery from '@/app/components/Gallery'
 
-export default async function Home() {
+import HeroBanner from '@/app/components/homepage/HeroBanner'
+import Portfolio from './components/homepage/Portfolio'
+
+export default function Home() {
   return (
     <>
       <HeroBanner />
-      <Gallery />
+      <Portfolio />
+
+      {/* <Gallery /> */}
     </>
   )
 }

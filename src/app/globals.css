@@ -31,6 +31,12 @@ body {
   /* color: rgb(var(--foreground-rgb)); */
   /* background: rgb(var(--background-end-rgb)); */
 }
+@layer base {
+  strong,
+  b {
+    @apply font-semibold;
+  }
+}
 
 @layer utilities {
 }

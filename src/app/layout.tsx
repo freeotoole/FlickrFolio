@@ -28,10 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.className} font-light text-black`}>
-        <GlobalSidebar />
-        <main className="p-[calc(var(--gutter)*2)] md:ml-[var(--sidebar-width)]">
-          {children}
-        </main>
+        {/* <GlobalSidebar /> */}
+        <main className="">{children}</main>
       </body>
     </html>
   )
