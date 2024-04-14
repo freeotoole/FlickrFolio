@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import Link from 'next/link'
+
 import Icon from '@/app/components/Icon'
 
 export default function About() {
@@ -32,8 +34,8 @@ export default function About() {
       <p>
         FlickrFolio is more than just a tool—it's a collaborative project. As an
         open-source endeavor, the source code and documentation is available on{' '}
-        <a href="https://github.com/freeotoole/FlickrFolio">GitHub</a>, inviting
-        contributions, issue reports, and feature suggestions from the
+        <Link href="https://github.com/freeotoole/FlickrFolio">GitHub</Link>,
+        inviting contributions, issue reports, and feature suggestions from the
         community. Join us in shaping the future of photography display on the
         web.
       </p>

@@ -53,11 +53,11 @@ export default async function Single({ params }: { params: ParamProps }) {
   }
 
   const isPortrait = size.lg?.height > size.lg?.width
-  const layoutStyles = `${isPortrait ? ' h-[calc(100vh-2rem)] flex-wrap ' : 'flex-col'} `
+  const layoutStyles = `${isPortrait ? ' h-[calc(100vh-4rem)] flex-wrap ' : 'flex-col'} `
 
   return (
     <div>
-      <div className="relative\">
+      <div className="relative max-w-7xl">
         <article className="">
           <div
             className={`align-start relative flex w-full justify-items-start gap-x-10 ${layoutStyles}`}
@@ -70,14 +70,14 @@ export default async function Single({ params }: { params: ParamProps }) {
               alt=""
             />
             <div
-              className={`${isPortrait ? 'flex max-w-md flex-col justify-center' : 'max-w-4xl'}`}
+              className={`${isPortrait ? 'flex flex-col justify-center' : ''}`}
             >
               <ImageNavigation prev={prev} next={next} />
               <div
-                className={` ${isPortrait ? 'order-first flex flex-col gap-y-4' : 'gap-x-10 py-6 lg:flex lg:flex-wrap'}`}
+                className={` ${isPortrait ? 'order-first flex max-w-md flex-col gap-y-4 ' : 'max-w-4xl gap-x-10 py-6 lg:flex lg:flex-wrap'}`}
               >
                 <h2
-                  className={`text-3xl text-primary-500 ${isPortrait ? '' : 'shrink-0 basis-64  lg:basis-80 lg:text-right'}`}
+                  className={`text-3xl text-primary-500 ${isPortrait ? '' : `shrink-0 basis-64  lg:basis-80 ${singlePhoto?.photo?.description._content ? 'lg:text-right' : ''}`}`}
                 >
                   {singlePhoto?.photo?.title._content}
                 </h2>

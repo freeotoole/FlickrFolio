@@ -17,8 +17,6 @@ export default async function GlobalSidebar() {
 
   // albums={albumList}
   return (
-    <div className="top-0 flex flex-col border-r border-gray-300 md:fixed md:h-screen md:w-[var(--sidebar-width)]">
-      <Navbar />
-    </div>
+    <div className="top-0 flex flex-col border-r border-gray-300 md:fixed md:h-screen "></div>
   )
 }

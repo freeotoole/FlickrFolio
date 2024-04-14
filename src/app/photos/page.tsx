@@ -1,6 +1,6 @@
 import { fetchPublicPhotos } from '@/app/apiUtils'
 import Gallery from '@/app/components/Gallery'
-import GlobalSidebar from '../components/GlobalSidebar'
+import { settings } from '@/app/settings'
 
 export default async function PhotosPage() {
   const data = await fetchPublicPhotos()
@@ -9,11 +9,8 @@ export default async function PhotosPage() {
     return <div>Loading...</div>
   }
   return (
-    <div className="">
-      <GlobalSidebar />
-      <div className=" md:ml-[var(--sidebar-width)]">
-        <Gallery />
-      </div>
+    <div className="min-h-screen">
+      <Gallery />
     </div>
   )
 }

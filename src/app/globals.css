@@ -7,7 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255; */
   --gutter: 0.5rem;
-  --sidebar-width: 17em;
+  --sidebar-width: 4.5rem;
   --tw-prose-body: pink;
   --tw-prose-headings: #111827;
   --tw-prose-lead: #4b5563;
@@ -39,4 +39,16 @@ body {
 }
 
 @layer utilities {
+  .link-text {
+    @apply font-medium underline;
+  }
+  .vertical-rl {
+    writing-mode: vertical-rl;
+  }
+  .vertical-lr {
+    writing-mode: vertical-lr;
+  }
+  .space-word {
+    word-spacing: 0.25em;
+  }
 }

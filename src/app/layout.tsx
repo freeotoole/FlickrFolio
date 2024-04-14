@@ -3,7 +3,7 @@ import { Space_Grotesk } from 'next/font/google'
 
 // Yanone_Kaffeesatz | Space_Grotesk
 
-import GlobalSidebar from '@/app/components/GlobalSidebar'
+import Navbar from '@/app/components/Navbar'
 
 import './globals.css'
 
@@ -26,10 +26,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="clamp-text-sm">
       <body className={`${sans.className} font-light text-black`}>
-        {/* <GlobalSidebar /> */}
-        <main className="">{children}</main>
+        <div className="grid grid-cols-[var(--sidebar-width)_1fr]">
+          <Navbar />
+          <main className="mt-10 w-full ">{children}</main>
+        </div>
       </body>
     </html>
   )

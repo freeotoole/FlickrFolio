@@ -1,7 +1,10 @@
+import Link from 'next/link'
+
 type CallToAction = {
   label: string
   href: string
   title?: string
+  target?: string
 }
 
 interface PortfolioItemTitleProps {
@@ -27,9 +30,9 @@ export default function PortfolioItem({
   return (
     <article className={`py-10 md:py-16 lg:py-20 ${className}`}>
       <div className="mx-auto grid max-w-6xl items-center gap-20 px-4 sm:px-6 md:grid-cols-2 md:px-10 ">
-        <div className="ml-auto flex flex-col">
+        <div className="ml-auto flex flex-col gap-6">
           {tags && (
-            <ul className="mb-10 flex gap-4 font-semibold clamp-text-sm">
+            <ul className="mb-10 flex gap-4 text-sm font-semibold">
               {tags.map((tag, i) => (
                 <li
                   key={i}
@@ -40,25 +43,25 @@ export default function PortfolioItem({
               ))}
             </ul>
           )}
-          <h2 className="font-semibold clamp-text-xl">{title}</h2>
+          <h2 className="text-3xl font-semibold">{title}</h2>
           <div className="flex flex-col gap-6">{description}</div>
           {(primaryCta || secondaryCta) && (
-            <p className="mr-auto mt-6 flex items-center gap-6 font-semibold">
+            <p className="mr-auto flex items-center gap-6 text-sm font-semibold">
               {primaryCta && (
-                <a
-                  href={primaryCta.href}
+                <Link
+                  {...primaryCta}
                   className="rounded-full bg-gray-600 px-6 py-3 text-white"
                 >
                   {primaryCta.label}
-                </a>
+                </Link>
               )}
               {secondaryCta && (
-                <a
-                  href={secondaryCta.href}
+                <Link
+                  {...secondaryCta}
                   className="text-blue-600 hover:underline"
                 >
                   {secondaryCta.label}
-                </a>
+                </Link>
               )}
             </p>
           )}

@@ -43,14 +43,10 @@ const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
 
   return (
     <nav>
-      <ul className="flex">
+      <ul className="flex border-b">
         {!!prevPath && (
           <li>
-            <Link
-              href={prevPath}
-              className="flex items-center gap-2 py-3 pr-4"
-              // onClick={() => navigate(-1)}
-            >
+            <Link href={prevPath} className="flex items-center gap-2 py-2 pr-4">
               <ArrowLeft strokeWidth={1} />
               Previous
             </Link>
@@ -58,11 +54,7 @@ const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
         )}
         {!!nextPath && (
           <li className="ml-auto">
-            <Link
-              href={nextPath}
-              className="flex items-center gap-2 py-3 pl-4"
-              // onClick={() => navigate(1)}
-            >
+            <Link href={nextPath} className="flex items-center gap-2 py-2 pl-4">
               Next <ArrowRight strokeWidth={1} />
             </Link>
           </li>

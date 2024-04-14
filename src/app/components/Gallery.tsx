@@ -65,7 +65,8 @@ const Gallery = (props: GalleryProps) => {
     }
   }
 
-  const columnClasses = 'grid gap-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3'
+  const columnClasses =
+    'grid gap-2 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'
 
   const isPortrait = (width: number, height: number) => {
     return height > width
@@ -73,7 +74,7 @@ const Gallery = (props: GalleryProps) => {
 
   return (
     <>
-      <section>
+      <section className="max-w-[1680px]">
         <div className={columnClasses}>
           {photos &&
             photos.map((photo: FlickrImageProps, i: number) => (
@@ -93,22 +94,21 @@ const Gallery = (props: GalleryProps) => {
                 />
               </Link>
             ))}
-        </div>
-      </section>
-      <div ref={ref} className="mt-4 py-6">
-        {isLastPage ? (
-          <div className="flex items-center justify-center gap-2">
-            <Icon name="Meh" className="text-4xl" />
-            <span>No more photos here!</span>
-          </div>
-        ) : (
-          <>
-            {loading && (
+          <div ref={ref} className="">
+            {isLastPage && loading && (
               <div className="">
                 <Icon name="Loader" className="mx-auto animate-spin text-4xl" />
               </div>
             )}
-          </>
+          </div>
+        </div>
+      </section>
+      <div className="mt-4 py-6">
+        {isLastPage && (
+          <div className="flex items-center justify-center gap-2">
+            <Icon name="Meh" className="text-4xl" />
+            <span>No more photos here!</span>
+          </div>
         )}
       </div>
     </>
