@@ -15,7 +15,7 @@ export default function Home() {
         <div className="grid w-full grid-cols-1 gap-x-20 gap-y-4 text-gray-200 md:grid-cols-3 ">
           <div className="w-full text-sm ">
             <h3 className="mb-1 block text-3xl font-semibold leading-loose">
-              Hi again.
+              Hello again.
             </h3>
             <p className="mb-2 text-xl">
               Thanks for making it to the end of the page!
