@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk } from 'next/font/google'
+import Head from 'next/head'
 
 // Yanone_Kaffeesatz | Space_Grotesk
 
@@ -10,15 +11,25 @@ import './globals.css'
 const sans = Space_Grotesk({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "FlickrFolio | A photo gallery by Free O'Toole",
+  title:
+    "Free O'Toole - Front End Developer | UX Engineer | Accessibility Advocate",
   description:
-    'Gallery website built with Next.js, Tailwind CSS and the Flickr API to display a user&apos;s photos and albums from Flickr.',
+    'UX Engineer & Accessibility Advocate with 18+ years of experience developing visually stunning, accessible, semantic, & performant cross-platform websites and applications.',
   openGraph: {
-    title: "FlickrFolio, by Free O'Toole",
+    title:
+      "Free O'Toole - Front End Developer | UX Engineer | Accessibility Advocate",
     description:
-      'Gallery website built with Next.js, Tailwind CSS and the Flickr API to display a user&apos;s photos and albums from Flickr.',
+      'UX Engineer & Accessibility Advocate with 18+ years of experience developing visually stunning, accessible, semantic, & performant cross-platform websites and applications.',
   },
+  // icons: [
+  //   {
+  //     rel: 'favicon',
+  //     url: '/favicon.ico',
+  //   },
+  // ],
 }
+// add favicon
+// favicon: '/favicon.ico',
 
 export default function RootLayout({
   children,
@@ -26,11 +37,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="clamp-text-sm">
+    <html lang="en">
       <body className={`${sans.className} font-light text-black`}>
         <div className="grid grid-cols-[var(--sidebar-width)_1fr]">
           <Navbar />
-          <main className="mt-10 w-full ">{children}</main>
+          <main className=" w-full ">{children}</main>
         </div>
       </body>
     </html>

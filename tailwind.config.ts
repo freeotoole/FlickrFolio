@@ -20,13 +20,9 @@ const config: Config = {
       yellow: colors.amber,
       red: colors.rose,
       blue: colors.sky,
+      purple: colors.indigo,
     },
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       screens: {
         xl: '1366px',
         '2xl': '1680px',
@@ -60,15 +56,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('@onthetools/tailwind-text-clamp')({
-      utilityClassName: 'clamp-text',
-      // fontScaleMin: 1.125,
-      // fontScaleMax: 1.25,
-      screenStart: 'md',
-      screenEnd: '2xl',
-    }),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }
 export default config

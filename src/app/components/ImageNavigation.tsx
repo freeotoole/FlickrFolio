@@ -43,7 +43,7 @@ const ImageNavigation = ({ prev, next }: { prev?: string; next?: string }) => {
 
   return (
     <nav>
-      <ul className="flex border-b">
+      <ul className="flex border-b text-xs">
         {!!prevPath && (
           <li>
             <Link href={prevPath} className="flex items-center gap-2 py-2 pr-4">

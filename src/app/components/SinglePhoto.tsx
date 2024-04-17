@@ -57,13 +57,12 @@ export default async function Single({ params }: { params: ParamProps }) {
 
   return (
     <div>
-      <div className="relative max-w-7xl">
+      <div className="relative max-w-4xl pr-4">
         <article className="">
           <div
             className={`align-start relative flex w-full justify-items-start gap-x-10 ${layoutStyles}`}
           >
             <Image
-              className=""
               src={`https://live.staticflickr.com/${singlePhoto?.photo?.server}/${params.id}_${singlePhoto?.photo?.originalsecret}_k.jpg`}
               width={size.lg?.width || size.md?.width}
               height={size.lg?.height || size.md?.height}
@@ -74,15 +73,15 @@ export default async function Single({ params }: { params: ParamProps }) {
             >
               <ImageNavigation prev={prev} next={next} />
               <div
-                className={` ${isPortrait ? 'order-first flex max-w-md flex-col gap-y-4 ' : 'max-w-4xl gap-x-10 py-6 lg:flex lg:flex-wrap'}`}
+                className={` ${isPortrait ? 'order-first flex max-w-sm flex-col gap-y-4 ' : 'max-w-4xl gap-x-10 py-6 lg:flex lg:flex-wrap'}`}
               >
                 <h2
-                  className={`text-3xl text-primary-500 ${isPortrait ? '' : `shrink-0 basis-64  lg:basis-80 ${singlePhoto?.photo?.description._content ? 'lg:text-right' : ''}`}`}
+                  className={`text-2xl text-black ${isPortrait ? '' : `shrink-0 basis-64  lg:basis-80 ${singlePhoto?.photo?.description._content ? 'lg:text-right' : ''}`}`}
                 >
                   {singlePhoto?.photo?.title._content}
                 </h2>
                 <div
-                  className={`${isPortrait ? '' : 'max-w-xl flex-1  text-black '}`}
+                  className={`text-sm ${isPortrait ? '' : 'max-w-xl flex-1 pt-2 text-gray-600'}`}
                 >
                   <p
                     dangerouslySetInnerHTML={{

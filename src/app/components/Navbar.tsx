@@ -35,19 +35,19 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
     <header className="">
       <style jsx global>{`
         :root {
-          --sidebar-width: ${hasChildren ? '7rem' : '4.5rem'};
+          --sidebar-width: ${hasChildren ? '5.5rem' : '3rem'};
         }
       `}</style>
 
-      <div className="fixed h-screen w-[var(--sidebar-width)] py-10 ">
+      <div className="fixed h-screen w-[var(--sidebar-width)] py-10 text-xs">
         <nav
-          className={`absolute bottom-0 top-0 mt-10 border-r-4 border-yellow-200 uppercase ${hasChildren ? 'right-10' : 'right-0'}`}
+          className={`absolute bottom-0 top-0 border-r-4 border-blue-700 pt-10 uppercase ${hasChildren ? 'right-8' : 'right-0'}`}
         >
           <ul className="ml-auto flex h-full flex-col gap-2 ">
             <li className="vertical-lr space-word rotate-180 tracking-widest">
               <a
                 href="/"
-                className={`inline-block py-8 pl-3 pr-4 ${pathname === '/' ? 'bg-yellow-200' : 'hover:bg-yellow-100'}`}
+                className={`inline-block py-8 pl-2 pr-3 ${pathname === '/' ? 'bg-blue-700 text-white' : 'hover:bg-blue-100'}`}
               >
                 Home
               </a>
@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
             <li className="vertical-lr space-word rotate-180 tracking-widest">
               <a
                 href="/photos"
-                className={`inline-block py-8 pl-3 pr-4 ${hasChildren ? 'bg-yellow-200' : 'hover:bg-yellow-100'}`}
+                className={`inline-block py-8  pl-2 pr-3 ${hasChildren ? 'bg-blue-700 text-white' : 'hover:bg-blue-100'}`}
               >
                 My Photography
               </a>
@@ -65,10 +65,10 @@ const Navbar: React.FC<NavbarProps> = ({ layout, hideTitle }) => {
 
         {hasChildren && (
           <nav className="">
-            <ul className="absolute bottom-0 right-0 top-0 z-10 mt-10 flex w-10 flex-col-reverse items-center">
+            <ul className="absolute bottom-0 right-0 top-0 z-10 flex w-8 flex-col-reverse items-center pt-10">
               <li className="vertical-rl space-word mb-auto rotate-180 tracking-widest">
                 <Link
-                  className={`group inline-flex items-center gap-2 py-1 text-gray-500   hover:underline  ${isActive('/photos') || pathname === '/' ? navActiveStyles : ''}`}
+                  className={`group inline-flex items-center gap-2 py-1 text-gray-500  hover:underline  ${isActive('/photos') || pathname === '/' ? navActiveStyles : ''}`}
                   href="/photos"
                 >
                   Latest Photos

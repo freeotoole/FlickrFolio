@@ -7,7 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255; */
   --gutter: 0.5rem;
-  --sidebar-width: 4.5rem;
+  --sidebar-width: 3rem;
   --tw-prose-body: pink;
   --tw-prose-headings: #111827;
   --tw-prose-lead: #4b5563;
@@ -32,6 +32,13 @@ body {
   /* background: rgb(var(--background-end-rgb)); */
 }
 @layer base {
+  html {
+    font-size: clamp(
+      1rem,
+      0.6513684210526316rem + 0.7263157894736841vw,
+      1.414rem
+    );
+  }
   strong,
   b {
     @apply font-semibold;
@@ -50,5 +57,29 @@ body {
   }
   .space-word {
     word-spacing: 0.25em;
+  }
+  @variants responsive {
+    .text-shadow {
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+    }
+    .text-shadow-md {
+      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.35);
+    }
+    .text-shadow-lg {
+      text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .text-shadow-light {
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.75);
+    }
+    .text-shadow-light-md {
+      text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.75);
+    }
+    .text-shadow-light-lg {
+      text-shadow: 4px 4px 2px rgba(255, 255, 255, 0.75);
+    }
+    .text-shadow-none {
+      text-shadow: none;
+    }
   }
 }
